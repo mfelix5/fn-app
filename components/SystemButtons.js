@@ -1,7 +1,13 @@
 import React from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
-export function SystemButtons() {
+export function SystemButtons(props) {
+
+  const handlePress = (system) => {
+    props.setSystem(system);
+    props.setModalOpen(true);
+  };
+
   return (
     <View style={styles.container}>
       {systems.map(system => {
@@ -10,7 +16,7 @@ export function SystemButtons() {
           disabled={!system.active}
           style={styles.button}
           key={system.name}
-          onPress={() => alert(system.name)}
+          onPress={() => handlePress(system.name)}
         >
           <Text>{system.name}</Text>
         </TouchableOpacity>

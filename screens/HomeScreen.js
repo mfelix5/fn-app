@@ -1,27 +1,28 @@
-import React, { useState, useEffect } from "react";
-import { Platform, ScrollView, StyleSheet, Text, View } from "react-native";
-import { SystemButtons } from "../components/SystemButtons";
+import React, { useState } from "react";
+import { ScrollView, StyleSheet, View } from "react-native";
+import Colors from '../constants/Colors';
+import { FormOne } from "../components/FormOne";
+import { HeadingText } from "../components/HeadingText";
+import { AppButton } from "../components/AppButton";
 
 export default function HomeScreen() {
+  const [formOneOpen, setFormOneOpen] = useState(false);
   return (
     <View style={styles.container}>
       <ScrollView
         style={styles.container}
         contentContainerStyle={styles.contentContainer}
       >
-        <View style={styles.titleContainer}>
-          <Text style={styles.title}>FareWise NY</Text>
-        </View>
-
-        <View style={styles.centeredContainer}>
-          <Text style={styles.getStartedText}>Choose a transit system and find your least expensive ticket options.</Text>
-        </View>
-
-        <View style={styles.centeredContainer}>
-          <SystemButtons />
-        </View>
-
-
+        <View style={styles.layout}>
+          <View style={styles.textContainer}>
+            <HeadingText>Farewise helps you save on your monthly commuting expenses in just three steps.</HeadingText>
+          </View>
+          <AppButton
+            handlePress={() => setFormOneOpen(true)}
+            buttonText="Get Going!"
+          />
+          {formOneOpen && <FormOne setFormOneOpen={setFormOneOpen} />}
+          </View>
       </ScrollView>
     </View>
   );
@@ -33,64 +34,18 @@ HomeScreen.navigationOptions = {
 
 const styles = StyleSheet.create({
   container: {
+    backgroundColor: Colors.darkBlue,
     flex: 1,
-    backgroundColor: "#fff"
   },
-  contentContainer: {
-    paddingTop: 30
-  },
-  centeredContainer: {
+  layout: {
     alignItems: "center",
-    marginTop: 50,
-    marginBottom: 20
+    height: "100%",
   },
-  getStartedContainer: {
-    alignItems: "center",
-    marginHorizontal: 50
-  },
-  homeScreenFilename: {
-    marginVertical: 7
-  },
-  getStartedText: {
-    fontSize: 25,
-    color: "rgba(96,100,109, 1)",
-    lineHeight: 24,
-    textAlign: "center"
-  },
-  title: {
-    fontSize: 50
-  },
-  titleContainer: {
-    alignItems: "center",
-    marginTop: 200,
-    marginBottom: 20
-  },
-  tabBarInfoContainer: {
-    position: "absolute",
-    bottom: 0,
-    left: 0,
-    right: 0,
-    ...Platform.select({
-      ios: {
-        shadowColor: "black",
-        shadowOffset: { width: 0, height: -3 },
-        shadowOpacity: 0.1,
-        shadowRadius: 3
-      },
-      android: {
-        elevation: 20
-      }
-    }),
-    alignItems: "center",
-    backgroundColor: "#fbfbfb",
-    paddingVertical: 20
-  },
-  tabBarInfoText: {
-    fontSize: 17,
-    color: "rgba(96,100,109, 1)",
-    textAlign: "center"
-  },
-  navigationFilename: {
-    marginTop: 5
+  textContainer: {
+    textAlign: "left",
+    marginTop: 250,
+    marginLeft: 15,
+    marginRight: 15,
+    marginBottom: 200
   },
 });
