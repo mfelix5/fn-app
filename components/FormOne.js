@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { StyleSheet, View } from "react-native";
 import { FormTwo } from "./FormTwo";
 import { AppModal } from "./AppModal";
-import { HeadingText } from "./HeadingText";
+import { Prompt } from "./Prompt";
 import { SystemButtons } from "./SystemButtons";
 
 export function FormOne({ setFormOneOpen }) {
@@ -11,7 +11,7 @@ export function FormOne({ setFormOneOpen }) {
   return (
     <AppModal onBack={() => setFormOneOpen(false)}>
       <View style={styles.formWrapper}>
-        <HeadingText style={{}} >Which transit system are you traveling on?</HeadingText>
+        <Prompt>Which transit system are you traveling on?</Prompt>
         <SystemButtons style={{}} setSystem={setSystem} setFormTwoOpen={setFormTwoOpen}/>
       </View>
       {formTwoOpen && <FormTwo setFormTwoOpen={setFormTwoOpen} system={system}/>}

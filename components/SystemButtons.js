@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import { HeadingText } from "../components/HeadingText";
+import { PromptText } from "../components/PromptText";
 import Colors from "../constants/Colors";
 
 export function SystemButtons(props) {
@@ -20,7 +20,7 @@ export function SystemButtons(props) {
           onPress={() => handlePress(system.name)}
         >
           <View style={styles.hr}/>
-          <HeadingText style={styles.text}>{system.name}</HeadingText>
+          <PromptText style={styles.text}>{system.name}</PromptText>
         </TouchableOpacity>
         );
       })}
@@ -38,7 +38,8 @@ const styles = StyleSheet.create({
     width: "100%"
   },
   text: {
-    paddingLeft: 15
+    paddingLeft: 15,
+    color: Colors.lightBlue
   },
   hr: {
     borderBottomColor: Colors.lightBlue,

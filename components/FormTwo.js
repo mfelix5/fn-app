@@ -5,7 +5,9 @@ import PickerModal from "react-native-picker-modal-view";
 import { FormThree } from "../components/FormThree";
 import { AppButton } from "../components/AppButton";
 import { AppModal } from "./AppModal";
-import { HeadingText } from "./HeadingText";
+import { Prompt } from "./Prompt";
+import { PromptText } from "./PromptText";
+import { Colors } from "react-native/Libraries/NewAppScreen";
 
 export function FormTwo({ setFormTwoOpen, system }) {
   const [formThreeOpen, setFormThreeOpen] = useState(false);
@@ -20,23 +22,22 @@ export function FormTwo({ setFormTwoOpen, system }) {
       );
       const lineOptions = result.data.map(line => {
         return {
-          Name: line,
-          // Value: line
+          Name: line, // "Name" needed for PickerModal component
         };
       });
       setLines(lineOptions);
-      // setSelectedLine(result.data[0]);
     };
     fetchLines();
   }, []);
 
   return (
     <AppModal onBack={() => setFormTwoOpen(false)}>
-      <HeadingText>What line are you traveling on?</HeadingText>
+      <View style={styles.formWrapper}>
+      <Prompt includeHR>What line are you traveling on?</Prompt>
         <PickerModal
           renderSelectView={(disabled, selected, showModal) => (
             <TouchableOpacity disabled={disabled} onPress={showModal}>
-              <HeadingText>{selectedLine ? selectedLine : "Select..."}</HeadingText>
+              <Prompt style={styles.selectText}>{selectedLine ? selectedLine : "select..."}</Prompt>
             </TouchableOpacity>
           )}
           onSelected={(s) => setSelectedLine(s.Name)}
@@ -47,9 +48,10 @@ export function FormTwo({ setFormTwoOpen, system }) {
           requireSelection={true}
           autoSort={false}
         />
-      <HeadingText>Where are you traveling from?</HeadingText>
-      <HeadingText>Where are you going?</HeadingText>
-      <HeadingText>When?</HeadingText>
+      <Prompt includeHR>Where are you traveling from?</Prompt>
+      <Prompt includeHR>Where are you going?</Prompt>
+      <Prompt includeHR>When?</Prompt>
+      </View>
       <AppButton
         handlePress={() => setFormThreeOpen(true)}
         buttonText="Ok, Next!"
@@ -59,4 +61,10 @@ export function FormTwo({ setFormTwoOpen, system }) {
   );
 }
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  formWrapper: {
+    width: "100%",
+    flex: 1,
+    justifyContent: "space-around",
+  },
+});
