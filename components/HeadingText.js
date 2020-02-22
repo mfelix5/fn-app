@@ -3,6 +3,7 @@ import { StyleSheet, Text } from 'react-native';
 import Colors from '../constants/Colors';
 
 export function HeadingText(props) {
+  console.log('props', props)
   return (
     <Text style={{ ...styles.heading, ...props.style}}>
       {props.children}

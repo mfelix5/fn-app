@@ -1,11 +1,12 @@
 import React from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { HeadingText } from "../components/HeadingText";
+import Colors from "../constants/Colors";
 
 export function SystemButtons(props) {
-
   const handlePress = (system) => {
     props.setSystem(system);
-    props.setModalOpen(true);
+    props.setFormTwoOpen(true);
   };
 
   return (
@@ -18,7 +19,8 @@ export function SystemButtons(props) {
           key={system.name}
           onPress={() => handlePress(system.name)}
         >
-          <Text>{system.name}</Text>
+          <View style={styles.hr}/>
+          <HeadingText style={styles.text}>{system.name}</HeadingText>
         </TouchableOpacity>
         );
       })}
@@ -28,26 +30,32 @@ export function SystemButtons(props) {
 
 const styles = StyleSheet.create({
   container: {
-    flexDirection: "row",
-    flex: 1,
-    backgroundColor: "#fff"
+    width: "100%",
+    alignItems: "flex-start"
   },
   button: {
-    alignItems: "center",
-    justifyContent: "center",
-    margin: 7,
-    width: 60,
-    height: 60,
-    backgroundColor: "gray",
-    borderRadius: 10
+    height: 80,
+    width: "100%"
+  },
+  text: {
+    paddingLeft: 15
+  },
+  hr: {
+    borderBottomColor: Colors.lightBlue,
+    borderBottomWidth: 2,
   }
 });
 
 const systems = [
   {
-    name: "NJT",
+    name: "MTA Subway",
     icon: "",
-    active: true
+    active: false
+  },
+  {
+    name: "MTA Bus",
+    icon: "",
+    active: false
   },
   {
     name: "LIRR",
@@ -55,14 +63,14 @@ const systems = [
     active: true
   },
   {
-    name: "MN",
+    name: "MetroNorth",
     icon: "",
     active: false
   },
   {
-    name: "Subway",
+    name: "NJT",
     icon: "",
-    active: false
+    active: true
   },
   {
     name: "PATH",

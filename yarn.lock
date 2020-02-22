@@ -5336,6 +5336,11 @@ react-native-gesture-handler@~1.5.0:
     invariant "^2.2.4"
     prop-types "^15.7.2"
 
+react-native-picker-modal-view@^1.3.1:
+  version "1.3.1"
+  resolved "https://registry.yarnpkg.com/react-native-picker-modal-view/-/react-native-picker-modal-view-1.3.1.tgz#f54a9c3317f94a1072353b250f329a7079ae07e5"
+  integrity sha512-IgXpckM6PeAS8VAXy4ZVHud20ka4Lh26MuDR2G2Mu0TJqe879hRAhoW30i/zP81hoNGrJ5C2OM0oaoN47OeFGg==
+
 react-native-platform-touchable@^1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/react-native-platform-touchable/-/react-native-platform-touchable-1.1.1.tgz#fde4acc65eea585d28b164d0c3716a42129a68e4"
