@@ -8,7 +8,9 @@ export function AppModal(props) {
     <Modal animationType="slide">
       <ModalHeader onBack={props.onBack}/>
       <View style={styles.modalContainer}>
-        {props.children}
+        <View style={styles.formWrapper}>
+          {props.children}
+        </View>
       </View>
     </Modal>
   );
@@ -21,5 +23,10 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     backgroundColor: Colors.darkBlue
-  }
+  },
+  formWrapper: {
+    width: "100%",
+    flex: 1,
+    justifyContent: "space-around",
+  },
 });
