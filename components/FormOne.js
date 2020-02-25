@@ -1,15 +1,13 @@
 import React, { useState } from "react";
 import { StyleSheet, View } from "react-native";
-import { FormTwo } from "./FormTwo";
-import { AppModal } from "./AppModal";
-import { Prompt } from "./Prompt";
-import { SystemButtons } from "./SystemButtons";
+import { AppModal, Prompt, SystemButtons } from "../components";
+import FormTwo from "../components/FormTwo";
 
-export function FormOne({ setFormOneOpen }) {
+export default function FormOne({ setFormOneOpen }) {
   const [formTwoOpen, setFormTwoOpen] = useState(false);
   const [system, setSystem] = useState('');
   return (
-    <AppModal onBack={() => setFormOneOpen(false)}>
+    <AppModal onBack={() => setFormOneOpen(false)} formNumber={1}>
         <Prompt>Which transit system?</Prompt>
         <SystemButtons style={{}} setSystem={setSystem} setFormTwoOpen={setFormTwoOpen}/>
       {formTwoOpen && <FormTwo setFormTwoOpen={setFormTwoOpen} system={system}/>}

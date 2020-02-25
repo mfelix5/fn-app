@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { ScrollView, StyleSheet, View } from "react-native";
 import Colors from "../constants/Colors";
-import { FormOne } from "../components/FormOne";
-import { PromptText } from "../components/PromptText";
-import { AppButton } from "../components/AppButton";
+import AppButton from "../components/AppButton";
+import PromptText from "../components/PromptText";
+import FormOne from "../components/FormOne";
 
 export default function HomeScreen() {
   const [formOneOpen, setFormOneOpen] = useState(false);

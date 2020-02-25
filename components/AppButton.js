@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, TouchableOpacity } from 'react-native';
 import Colors from '../constants/Colors';
 
-export function AppButton(props) {
+export default function AppButton(props) {
   return (
     <TouchableOpacity
       style={styles.button}

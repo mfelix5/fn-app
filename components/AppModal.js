@@ -1,15 +1,15 @@
 import React from 'react';
 import { Modal, StyleSheet, View } from 'react-native';
-import { ModalHeader } from "./ModalHeader";
+import ModalHeader from "../components/ModalHeader";
 import Colors from '../constants/Colors';
 
-export function AppModal(props) {
+export default function AppModal({ children, formNumber, onBack }) {
   return (
     <Modal animationType="slide">
-      <ModalHeader onBack={props.onBack}/>
+      <ModalHeader onBack={onBack} formNumber={formNumber}/>
       <View style={styles.modalContainer}>
         <View style={styles.formWrapper}>
-          {props.children}
+          {children}
         </View>
       </View>
     </Modal>

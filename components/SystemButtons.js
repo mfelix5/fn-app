@@ -1,9 +1,9 @@
 import React from 'react';
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import { PromptText } from "../components/PromptText";
+import { StyleSheet, TouchableOpacity, View } from 'react-native';
+import PromptText from "../components/PromptText";
 import Colors from "../constants/Colors";
 
-export function SystemButtons(props) {
+export default function SystemButtons(props) {
   const handlePress = (system) => {
     props.setSystem(system);
     props.setFormTwoOpen(true);

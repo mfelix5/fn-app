@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { StyleSheet, TouchableOpacity, View } from "react-native";
 import axios from "axios";
 import PickerModal from "react-native-picker-modal-view";
-import { FormThree } from "../components/FormThree";
-import { AppButton } from "../components/AppButton";
-import { AppModal } from "./AppModal";
-import { Prompt } from "./Prompt";
+import { AppButton, AppModal, SelectedText, Prompt } from "../components";
+import FormThree from "../components/FormThree";
 
-export function FormTwo({ setFormTwoOpen, system }) {
+export default function FormTwo({ setFormTwoOpen, system }) {
   const [formThreeOpen, setFormThreeOpen] = useState(false);
   const [linesInSystem, setLines] = useState([]);
   const [selectedLine, setLine] = useState(null);
@@ -16,7 +14,7 @@ export function FormTwo({ setFormTwoOpen, system }) {
   const [selectedDestination, setDestination] = useState("");
   const [selectedMonth, setMonth] = useState(""); // TODO: default to this month
 
-  const months = [{ Name: "February" }, { Name: "March"}]
+  const months = [{ Name: "February" }, { Name: "March"}] // TODO: don't hardcode this
 
   useEffect(() => {
     const fetchLines = async () => {
@@ -42,31 +40,33 @@ export function FormTwo({ setFormTwoOpen, system }) {
   }, [selectedLine]);
 
   return (
-    <AppModal onBack={() => setFormTwoOpen(false)}>
-      <Prompt includeHR>Which line?</Prompt>
-      <PickerModal
-        renderSelectView={(disabled, selected, showModal) => (
-          <TouchableOpacity disabled={disabled} onPress={showModal}>
-            <Prompt style={styles.selectText}>{selectedLine ? selectedLine : "select..."}</Prompt>
-          </TouchableOpacity>
-        )}
-        onSelected={(s) => setLine(s.Name)}
-        items={linesInSystem}
-        selected={selectedLine}
-        autoGenerateAlphabeticalIndex={true}
-        searchPlaceholderText={"Search..."}
-        requireSelection={true}
-        autoSort={false}
-      />
-      <Prompt includeHR>Origin?</Prompt>
-      <PickerModal
+    <AppModal onBack={() => setFormTwoOpen(false)} formNumber={2}>
+      <View>
+        <Prompt includeHR>Which line?</Prompt>
+        <PickerModal
+          renderSelectView={(disabled, selected, showModal) => (
+            <TouchableOpacity disabled={disabled} onPress={showModal}>
+              <SelectedText>{selectedLine}</SelectedText>
+            </TouchableOpacity>
+          )}
+          onSelected={(s) => setLine(s.Name)}
+          items={linesInSystem}
+          selected={selectedLine}
+          autoGenerateAlphabeticalIndex={true}
+          searchPlaceholderText={"Search..."}
+          requireSelection={true}
+          autoSort={false}
+        />
+      </View>
+      <View>
+        <Prompt includeHR>Origin?</Prompt>
+        <PickerModal
           renderSelectView={(disabled, selected, showNextModal) => (
             <TouchableOpacity disabled={disabled} onPress={showNextModal}>
-              <Prompt style={styles.selectText}>{selectedOrigin ? selectedOrigin : "select..."}</Prompt>
+              <SelectedText>{selectedOrigin}</SelectedText>
             </TouchableOpacity>
           )}
           onSelected={(s) => setOrigin(s.Name)}
-          // items={stationsOnLine}
           items = {stationsOnLine}
           selected={selectedOrigin}
           autoGenerateAlphabeticalIndex={true}
@@ -74,36 +74,41 @@ export function FormTwo({ setFormTwoOpen, system }) {
           requireSelection={true}
           autoSort={false}
         />
-      <Prompt includeHR>Destination?</Prompt>
-      <PickerModal
-        renderSelectView={(disabled, selected, showNextModal) => (
-          <TouchableOpacity disabled={disabled} onPress={showNextModal}>
-            <Prompt style={styles.selectText}>{selectedDestination ? selectedDestination : "select..."}</Prompt>
-          </TouchableOpacity>
-        )}
-        onSelected={(s) => setDestination(s.Name)}
-        items = {stationsOnLine}
-        selected={selectedDestination}
-        autoGenerateAlphabeticalIndex={true}
-        searchPlaceholderText={"Search..."}
-        requireSelection={true}
-        autoSort={false}
-      />
-      <Prompt includeHR>When?</Prompt>
-      <PickerModal
-        renderSelectView={(disabled, selected, showModal) => (
-          <TouchableOpacity disabled={disabled} onPress={showModal}>
-            <Prompt style={styles.selectText}>{selectedMonth ? selectedMonth : "select..."}</Prompt>
-          </TouchableOpacity>
-        )}
-        onSelected={(s) => setMonth(s.Name)}
-        items = {months}
-        selected={selectedMonth}
-        autoGenerateAlphabeticalIndex={false}
-        searchPlaceholderText={"Search..."}
-        requireSelection={true}
-        autoSort={false}
-      />
+      </View>
+      <View>
+        <Prompt includeHR>Destination?</Prompt>
+        <PickerModal
+          renderSelectView={(disabled, selected, showNextModal) => (
+            <TouchableOpacity disabled={disabled} onPress={showNextModal}>
+              <SelectedText>{selectedDestination}</SelectedText>
+            </TouchableOpacity>
+          )}
+          onSelected={(s) => setDestination(s.Name)}
+          items = {stationsOnLine}
+          selected={selectedDestination}
+          autoGenerateAlphabeticalIndex={true}
+          searchPlaceholderText={"Search..."}
+          requireSelection={true}
+          autoSort={false}
+        />
+      </View>
+      <View>
+        <Prompt includeHR>When?</Prompt>
+        <PickerModal
+          renderSelectView={(disabled, selected, showModal) => (
+            <TouchableOpacity disabled={disabled} onPress={showModal}>
+              <SelectedText>{selectedMonth}</SelectedText>
+            </TouchableOpacity>
+          )}
+          onSelected={(s) => setMonth(s.Name)}
+          items = {months}
+          selected={selectedMonth}
+          autoGenerateAlphabeticalIndex={false}
+          searchPlaceholderText={"Search..."}
+          requireSelection={true}
+          autoSort={false}
+        />
+      </View>
       <View style={styles.buttonContainer}>
         <AppButton
           handlePress={() => setFormThreeOpen(true)}
@@ -114,6 +119,7 @@ export function FormTwo({ setFormTwoOpen, system }) {
         <FormThree
           setFormThreeOpen={setFormThreeOpen}
           formData={{
+            system,
             line: selectedLine,
             origin: selectedOrigin,
             destination: selectedDestination,

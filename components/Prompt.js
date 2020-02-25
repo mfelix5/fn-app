@@ -1,9 +1,9 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
-import { PromptText } from "../components/PromptText";
+import PromptText from "../components/PromptText";
 import Colors from '../constants/Colors';
 
-export function Prompt(props) {
+export default function Prompt(props) {
   return (
     <View style={styles.promptContainer}>
       <PromptText style={styles.text}>{props.children}</PromptText>
@@ -15,7 +15,6 @@ export function Prompt(props) {
 const styles = StyleSheet.create({
   promptContainer: {
     textAlign: "left",
-    marginBottom: 30
   },
   text: {
     marginHorizontal: 15,
