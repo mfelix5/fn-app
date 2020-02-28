@@ -7,7 +7,7 @@ import Colors from "../constants/Colors";
 // week string from API:
 // "Sun Mar 01 2020 05:00:00 GMT+0000 - Fri Mar 06 2020 05:00:00 GMT+0000"
 
-export default function WeekLabel({ weekString }) {
+export default function WeekRow({ handleMinus, handlePlus, nTrips, weekString }) {
   const [beginDate, endDate] = weekString.split(" - ");
   const [day1, month1, date1] = beginDate.split(" ");
   const [day2, month2, date2] = endDate.split(" ");
@@ -33,15 +33,17 @@ export default function WeekLabel({ weekString }) {
           name={"minus"}
           size={34}
           color="white"
+          onPress={handleMinus}
         />
         <View style={styles.square}>
-          <Text style={styles.quantityText}>5</Text>
+          <Text style={styles.quantityText}>{nTrips}</Text>
         </View>
         <Entypo
           style={styles.icon}
           name={"plus"}
           size={34}
           color="white"
+          onPress={handlePlus}
         />
       </View>
     </>

@@ -6,4 +6,4 @@ export { default as PromptText } from "./PromptText";
 export { default as SelectedText } from "./SelectedText";
 export { default as Recommendation } from "./Recommendation";
 export { default as SystemButtons } from "./SystemButtons";
-export { default as WeekLabel } from "./WeekLabel";
+export { default as WeekRow } from "./WeekRow";

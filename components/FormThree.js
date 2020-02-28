@@ -1,13 +1,28 @@
 import React, { useEffect, useState } from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import axios from "axios";
-import { AppButton, AppModal, Prompt, Recommendation, WeekLabel } from "../components";
+import {
+  AppButton,
+  AppModal,
+  Prompt,
+  Recommendation,
+  WeekRow
+} from "../components";
 
 export default function FormThree({ setFormThreeOpen, formData }) {
-  // localhost:3000/calendar?month=March&year=2020
-
   const [recommendationOpen, setRecommendationOpen] = useState(false);
   const [calendar, setCalendar] = useState({});
+
+  const MIN_TRIPS = 0;
+  const MAX_TRIPS = 20;
+  const [trips, setTrips] = useState({
+    week1: 0,
+    week2: 0,
+    week3: 0,
+    week4: 0,
+    week5: 0,
+    week6: 0
+  });
 
   useEffect(() => {
     const fetchCalendar = async () => {
@@ -25,8 +40,28 @@ export default function FormThree({ setFormThreeOpen, formData }) {
         {`How many one-way trips will you make between ${formData.origin} and ${formData.destination}?`}
       </Prompt>
       <View>
-        {Object.keys(calendar).map(week => {
-          return (<WeekLabel key={week} weekString={calendar[week]} />)
+        {Object.keys(calendar).map((week, i) => {
+          const weekKey = `week${i + 1}`;
+          return (
+            <WeekRow
+              key={i}
+              weekString={calendar[week]}
+              nTrips={trips[weekKey]}
+              handleMinus={() => {
+                setTrips({
+                  ...trips,
+                  [weekKey]: trips[weekKey] > MIN_TRIPS ? trips[weekKey] - 1 : 0
+                });
+              }}
+              handlePlus={() => {
+                setTrips({
+                  ...trips,
+                  [weekKey]:
+                    trips[weekKey] < MAX_TRIPS ? trips[weekKey] + 1 : MAX_TRIPS
+                });
+              }}
+            />
+          );
         })}
       </View>
       <View style={styles.buttonContainer}>
@@ -36,7 +71,13 @@ export default function FormThree({ setFormThreeOpen, formData }) {
         />
       </View>
       {recommendationOpen && (
-        <Recommendation setRecommendationOpen={setRecommendationOpen} />
+        <Recommendation
+          setRecommendationOpen={setRecommendationOpen}
+          query={{
+            ...formData,
+            oneWaysNeeded: trips
+          }}
+        />
       )}
     </AppModal>
   );
