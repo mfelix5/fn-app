@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { StyleSheet, TouchableOpacity, View } from "react-native";
 import axios from "axios";
+import moment from "moment";
 import PickerModal from "react-native-picker-modal-view";
 import { AppButton, AppModal, SelectedText, Prompt } from "../components";
 import FormThree from "../components/FormThree";
@@ -12,9 +13,17 @@ export default function FormTwo({ setFormTwoOpen, system }) {
   const [stationsOnLine, setStations] = useState([]);
   const [selectedOrigin, setOrigin] = useState("");
   const [selectedDestination, setDestination] = useState("");
-  const [selectedMonth, setMonth] = useState(""); // TODO: default to this month
+  const [selectedMonth, setMonth] = useState({});
 
-  const months = [{ Name: "February" }, { Name: "March"}] // TODO: don't hardcode this
+  const today = moment();
+  const thisMonth = today.format("MMMM");
+  const thisMonthValue = today.format("YYYY-MM-DD");
+  const nextMonth = today.add(1, "month").format("MMMM");
+  const nextMonthValue = today.add(1, "month").format("YYYY-MM-DD");
+  const monthOptions = [
+    { Name: thisMonth, Value: thisMonthValue },
+    { Name: nextMonth, Value: nextMonthValue }
+  ];
 
   useEffect(() => {
     const fetchLines = async () => {
@@ -97,11 +106,11 @@ export default function FormTwo({ setFormTwoOpen, system }) {
         <PickerModal
           renderSelectView={(disabled, selected, showModal) => (
             <TouchableOpacity disabled={disabled} onPress={showModal}>
-              <SelectedText>{selectedMonth}</SelectedText>
+              <SelectedText>{selectedMonth.Name}</SelectedText>
             </TouchableOpacity>
           )}
-          onSelected={(s) => setMonth(s.Name)}
-          items = {months}
+          onSelected={(s) => setMonth(s)}
+          items = {monthOptions}
           selected={selectedMonth}
           autoGenerateAlphabeticalIndex={false}
           searchPlaceholderText={"Search..."}
@@ -123,7 +132,7 @@ export default function FormTwo({ setFormTwoOpen, system }) {
             line: selectedLine,
             origin: selectedOrigin,
             destination: selectedDestination,
-            month: selectedMonth
+            month: selectedMonth.Value
           }}
       />}
     </AppModal>

@@ -27,18 +27,12 @@ export default function Recommendation({ setRecommendationOpen, query }) {
       try {
         const result = await axios.post(
           `http://localhost:3000/query`, {
-            "userId": "2342532",
+            "userId": "development",
             "fareType": "regular",
             "originId": "5e492920099b7087d62ac98b",
             "destination": "New York",
             "month": "2020-03-01",
-            "oneWaysNeeded": {
-              "week1": 10,
-              "week2": 8,
-              "week3": 0,
-              "week4": 6,
-              "week5": 0
-            }
+            "oneWaysNeeded": query.oneWaysNeeded
           }
         );
         setRecommendation(result.data);
@@ -53,7 +47,7 @@ export default function Recommendation({ setRecommendationOpen, query }) {
     <AppModal onBack={() => setRecommendationOpen(false)}>
       <PromptText>Recommendation</PromptText>
       <Text style={{color: "white"}}>
-        {JSON.stringify(recommendation)}
+        {JSON.stringify(recommendation.recommendation)}
       </Text>
     </AppModal>
   );

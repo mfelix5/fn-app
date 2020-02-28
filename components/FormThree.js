@@ -26,6 +26,7 @@ export default function FormThree({ setFormThreeOpen, formData }) {
 
   useEffect(() => {
     const fetchCalendar = async () => {
+      console.log(formData.month)
       const result = await axios(
         `http://localhost:3000/calendar?month=March&year=2020`
       );
