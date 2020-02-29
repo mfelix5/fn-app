@@ -37,7 +37,7 @@ export default function FormThree({ setFormThreeOpen, formData }) {
   return (
     <AppModal onBack={() => setFormThreeOpen(false)} formNumber={3}>
       <Prompt>
-        {`How many one-way trips will you make between ${formData.origin} and ${formData.destination}?`}
+        {`How many one-way trips will you make between ${formData.origin.Name} and ${formData.destination.Name}?`}
       </Prompt>
       <View>
         {Object.keys(calendar).map((week, i) => {

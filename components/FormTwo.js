@@ -10,7 +10,7 @@ export default function FormTwo({ setFormTwoOpen, system }) {
   const [formThreeOpen, setFormThreeOpen] = useState(false);
   const [linesInSystem, setLines] = useState([]);
   const [selectedLine, setLine] = useState(null);
-  const [stationsOnLine, setStations] = useState([]);
+  const [stations, setStations] = useState([]);
   const [selectedOrigin, setOrigin] = useState("");
   const [selectedDestination, setDestination] = useState("");
   const [selectedMonth, setMonth] = useState({});
@@ -27,30 +27,43 @@ export default function FormTwo({ setFormTwoOpen, system }) {
 
   useEffect(() => {
     const fetchLines = async () => {
-      const result = await axios(
-        `http://localhost:3000/lines?system=${system}`
-      );
-      const lineOptions = result.data.map(line => ({Name: line}));
-      setLines(lineOptions);
+      if (["NJT"].includes(system)) {
+        const result = await axios(
+          `http://localhost:3000/lines?system=${system}`
+        );
+        const lineOptions = result.data.map(line => ({Name: line}));
+        setLines(lineOptions);
+      }
     };
     fetchLines();
   }, []);
 
   useEffect(() => {
     const fetchStations = async () => {
-      const result = await axios.post(`http://localhost:3000/stations`, {
-        system,
-        line: selectedLine,
-      });
-      const origins = result.data.map(o => ({ Name: o.name }));
-      setStations(origins);
+      let result;
+      if (system === "NJT") {
+        result = await axios.post(`http://localhost:3000/stations`, { system, line: selectedLine });
+      } else if (system === "LIRR") {
+        result = await axios.get(`http://localhost:3000/stations?system=${system}`);
+      }
+      const stations = result.data.map(s => ({ ...s, Name: s.name }));
+      setStations(stations);
+
     };
     fetchStations();
   }, [selectedLine]);
 
+  const getDestinations = system => {
+    if (selectedOrigin && system === "LIRR") return stations;
+    if (selectedOrigin && system === "NJT") {
+      return Object.keys(selectedOrigin.destinations).map(d => ({ Name: d }));
+    }
+  }
+
   return (
     <AppModal onBack={() => setFormTwoOpen(false)} formNumber={2}>
-      <View>
+      {system === "NJT" &&
+        <View>
         <Prompt includeHR>Which line?</Prompt>
         <PickerModal
           renderSelectView={(disabled, selected, showModal) => (
@@ -58,25 +71,27 @@ export default function FormTwo({ setFormTwoOpen, system }) {
               <SelectedText>{selectedLine}</SelectedText>
             </TouchableOpacity>
           )}
-          onSelected={(s) => setLine(s.Name)}
-          items={linesInSystem}
-          selected={selectedLine}
-          autoGenerateAlphabeticalIndex={true}
-          searchPlaceholderText={"Search..."}
-          requireSelection={true}
-          autoSort={false}
-        />
-      </View>
+            onSelected={(s) => setLine(s.Name)}
+            items={linesInSystem}
+            selected={selectedLine}
+            autoGenerateAlphabeticalIndex={true}
+            searchPlaceholderText={"Search..."}
+            requireSelection={true}
+            autoSort={false}
+          />
+        </View>
+      }
+
       <View>
         <Prompt includeHR>Origin?</Prompt>
         <PickerModal
           renderSelectView={(disabled, selected, showNextModal) => (
             <TouchableOpacity disabled={disabled} onPress={showNextModal}>
-              <SelectedText>{selectedOrigin}</SelectedText>
+              <SelectedText>{selectedOrigin.Name}</SelectedText>
             </TouchableOpacity>
           )}
-          onSelected={(s) => setOrigin(s.Name)}
-          items = {stationsOnLine}
+          onSelected={(s) => setOrigin(s)}
+          items = {stations}
           selected={selectedOrigin}
           autoGenerateAlphabeticalIndex={true}
           searchPlaceholderText={"Search..."}
@@ -89,11 +104,11 @@ export default function FormTwo({ setFormTwoOpen, system }) {
         <PickerModal
           renderSelectView={(disabled, selected, showNextModal) => (
             <TouchableOpacity disabled={disabled} onPress={showNextModal}>
-              <SelectedText>{selectedDestination}</SelectedText>
+              <SelectedText>{selectedDestination.Name}</SelectedText>
             </TouchableOpacity>
           )}
-          onSelected={(s) => setDestination(s.Name)}
-          items = {stationsOnLine}
+          onSelected={(s) => setDestination(s)}
+          items = {getDestinations(system)}
           selected={selectedDestination}
           autoGenerateAlphabeticalIndex={true}
           searchPlaceholderText={"Search..."}
@@ -120,7 +135,11 @@ export default function FormTwo({ setFormTwoOpen, system }) {
       </View>
       <View style={styles.buttonContainer}>
         <AppButton
-          handlePress={() => setFormThreeOpen(true)}
+          handlePress={() => {
+            if (selectedOrigin && selectedDestination && selectedMonth) {
+              setFormThreeOpen(true)
+            }
+          }}
           buttonText="Ok, Next!"
         />
       </View>
