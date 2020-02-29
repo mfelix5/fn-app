@@ -16,10 +16,10 @@ export default function FormTwo({ setFormTwoOpen, system }) {
   const [selectedMonth, setMonth] = useState({});
 
   const today = moment();
-  const thisMonth = today.format("MMMM");
-  const thisMonthValue = today.format("YYYY-MM-DD");
-  const nextMonth = today.add(1, "month").format("MMMM");
-  const nextMonthValue = today.add(1, "month").format("YYYY-MM-DD");
+  const thisMonth = today.clone().format("MMMM");
+  const thisMonthValue = today.clone().format("YYYY-MM-DD");
+  const nextMonth = today.clone().add(1, "month").format("MMMM");
+  const nextMonthValue = today.clone().add(1, "month").format("YYYY-MM-DD");
   const monthOptions = [
     { Name: thisMonth, Value: thisMonthValue },
     { Name: nextMonth, Value: nextMonthValue }
