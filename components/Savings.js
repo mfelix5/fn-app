@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import Colors from '../constants/Colors';
+import Layout from "../constants/Layout";
 
 export default function Savings(props) {
   const { savings, totalCost } = props.savings;
@@ -16,7 +17,7 @@ export default function Savings(props) {
 
 const styles = StyleSheet.create({
   savingsContainer: {
-    marginHorizontal: 15
+    marginHorizontal: Layout.margin
   },
   text: {
     fontSize: 14,

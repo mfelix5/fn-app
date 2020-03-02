@@ -7,6 +7,7 @@ import {
   Prompt,
   WeekRow
 } from "../components";
+import Layout from "../constants/Layout";
 
 export default function FormThree(props) {
   const formData = props.navigation.getParam("formData");
@@ -86,7 +87,6 @@ export default function FormThree(props) {
 
 const styles = StyleSheet.create({
   buttonContainer: {
-    alignItems: "center",
-    justifyContent: "space-around"
+    paddingHorizontal: Layout.margin
   }
 });

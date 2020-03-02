@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, TouchableOpacity, View } from 'react-native';
 import PromptText from "../components/PromptText";
 import Colors from "../constants/Colors";
+import Layout from "../constants/Layout";
 
 export default function SystemButtons(props) {
   return (
@@ -33,7 +34,7 @@ const styles = StyleSheet.create({
     width: "100%"
   },
   text: {
-    paddingLeft: 15,
+    paddingLeft: Layout.margin,
     color: Colors.lightBlue
   },
   hr: {

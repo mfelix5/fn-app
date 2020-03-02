@@ -3,6 +3,7 @@ import { StyleSheet, Text, View } from "react-native";
 import moment from "moment";
 import { Entypo } from "@expo/vector-icons";
 import Colors from "../constants/Colors";
+import Layout from "../constants/Layout";
 
 // week string from API:
 // "Sun Mar 01 2020 05:00:00 GMT+0000 - Fri Mar 06 2020 05:00:00 GMT+0000"
@@ -58,7 +59,7 @@ const styles = StyleSheet.create({
   },
   dayContainer: {
     textAlign: "left",
-    paddingHorizontal: 15
+    paddingHorizontal: Layout.margin
   },
   dayText: {
     color: Colors.lightBlue,

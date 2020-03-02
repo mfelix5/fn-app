@@ -4,6 +4,7 @@ import axios from "axios";
 import moment from "moment";
 import PickerModal from "react-native-picker-modal-view";
 import { AppButton, FormScreenTemplate, SelectedText, Prompt } from "../components";
+import Layout from "../constants/Layout";
 
 export default function FormTwo(props) {
   const system = props.navigation.getParam("system");
@@ -160,7 +161,6 @@ export default function FormTwo(props) {
 
 const styles = StyleSheet.create({
   buttonContainer: {
-    alignItems: "center",
-    justifyContent: "space-around",
+    paddingHorizontal: Layout.margin
   },
 });

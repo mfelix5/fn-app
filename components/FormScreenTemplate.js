@@ -7,7 +7,7 @@ export default function FormScreenTemplate({ children, formNumber, onBack }) {
   return (
     <>
       <FormNavigationHeader onBack={onBack} formNumber={formNumber}/>
-      <View style={styles.modalContainer}>
+      <View style={styles.screenContainer}>
         <View style={styles.formWrapper}>
           {children}
         </View>
@@ -17,7 +17,7 @@ export default function FormScreenTemplate({ children, formNumber, onBack }) {
 }
 
 const styles = StyleSheet.create({
-  modalContainer: {
+  screenContainer: {
     flex: 1,
     flexDirection: "column",
     alignItems: "center",

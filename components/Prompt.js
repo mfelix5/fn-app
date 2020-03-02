@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import PromptText from "../components/PromptText";
 import Colors from '../constants/Colors';
+import Layout from "../constants/Layout";
 
 export default function Prompt(props) {
   return (
@@ -17,7 +18,7 @@ const styles = StyleSheet.create({
     textAlign: "left",
   },
   text: {
-    marginHorizontal: 15,
+    marginHorizontal: Layout.margin,
   },
   hr: {
     height: 20,

@@ -15,7 +15,7 @@ export default function AppButton(props) {
 
 const styles = StyleSheet.create({
   button: {
-    width: "80%",
+    width: "100%",
     height: 110,
     backgroundColor: Colors.lightBlue,
     borderRadius: 5,

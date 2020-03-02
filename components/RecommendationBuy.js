@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import Colors from '../constants/Colors';
+import Layout from "../constants/Layout";
 
 export default function RecommendationBuy(props) {
   const { purchase, savings, totalCost } = props.recommendation;
@@ -52,7 +53,7 @@ export default function RecommendationBuy(props) {
 const styles = StyleSheet.create({
   cardContainer: {
     flexDirection: "row",
-    marginHorizontal: 15,
+    marginHorizontal: Layout.margin,
     justifyContent: "space-around",
   },
   card: {
@@ -82,7 +83,7 @@ const styles = StyleSheet.create({
     marginBottom: 18
   },
   savingsContainer: {
-    marginHorizontal: 15
+    marginHorizontal: Layout.margin
   },
   totalCostText: {
     fontSize: 36,

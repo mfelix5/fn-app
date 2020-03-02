@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { Entypo } from '@expo/vector-icons';
 import Colors from '../constants/Colors';
+import Layout from "../constants/Layout";
 
 export default function SelectedText({ children }) {
 
@@ -42,7 +43,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    paddingHorizontal: 15,
+    paddingHorizontal: Layout.margin,
     marginTop: 0,
     paddingTop: 0
   }

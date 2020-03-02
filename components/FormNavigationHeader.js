@@ -2,6 +2,7 @@ import React from "react";
 import { StyleSheet, TouchableOpacity, View } from 'react-native';
 import { Circle } from "./Circle";
 import { Ionicons } from '@expo/vector-icons';
+import Layout from "../constants/Layout";
 
 export default function FormNavigationHeader({ onBack, formNumber }) {
   return (
@@ -35,7 +36,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     paddingTop: 50,
     paddingBottom: 20,
-    paddingLeft: 15,
+    paddingLeft: Layout.margin,
     backgroundColor: "#0B0D35"
   },
   icon: {
