@@ -5,7 +5,6 @@ export { default as Prompt } from "./Prompt";
 export { default as PromptText } from "./PromptText";
 export { default as SelectedText } from "./SelectedText";
 export { default as Recommendation } from "./Recommendation";
-export { default as RecommendationCard } from "./RecommendationCards";
-export { default as Savings } from "./Savings";
+
 export { default as SystemButtons } from "./SystemButtons";
 export { default as WeekRow } from "./WeekRow";

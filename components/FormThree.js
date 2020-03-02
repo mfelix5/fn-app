@@ -73,8 +73,9 @@ export default function FormThree({ setFormThreeOpen, formData }) {
       {recommendationOpen && (
         <Recommendation
           setRecommendationOpen={setRecommendationOpen}
-          query={{
+          formData={{
             ...formData,
+            calendar,
             oneWaysNeeded: trips
           }}
         />

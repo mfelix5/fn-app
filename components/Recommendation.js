@@ -2,13 +2,12 @@ import React, { useState, useEffect } from "react";
 import { StyleSheet, Text } from "react-native";
 import axios from "axios";
 import AppModal from "../components/AppModal";
-import RecommendationCards from "../components/RecommendationCards";
-import Savings from "../components/Savings";
+import RecommendationBuy from "../components/RecommendationBuy";
 import Prompt from "../components/Prompt";
+import RecommendationUse from "./RecommendationUse";
 
-export default function Recommendation({ setRecommendationOpen, query }) {
-  const [recommendation, setRecommendation] = useState({});
-
+export default function Recommendation({ setRecommendationOpen, formData }) {
+  const [queryResponse, setQueryResponse] = useState({});
   useEffect(() => {
     const fetchRecommendation = async () => {
       try {
@@ -16,13 +15,13 @@ export default function Recommendation({ setRecommendationOpen, query }) {
           `https://farewise.herokuapp.com/query`, {
             "userId": "development",
             "fareType": "regular",
-            "originId": query.origin._id,
-            "destination": query.destination.Name,
-            "month": query.month,
-            "oneWaysNeeded": query.oneWaysNeeded
+            "originId": formData.origin._id,
+            "destination": formData.destination.Name,
+            "month": formData.month,
+            "oneWaysNeeded": formData.oneWaysNeeded
           }
         );
-        setRecommendation(result.data);
+        setQueryResponse(result.data);
       } catch(err) {
         console.log('err', err)
       }
@@ -33,15 +32,17 @@ export default function Recommendation({ setRecommendationOpen, query }) {
   return (
     <AppModal onBack={() => setRecommendationOpen(false)}>
       {
-        recommendation && recommendation.recommendation &&
+        queryResponse && queryResponse.recommendation &&
           <>
-          <Prompt>{recommendation.recommendation.message}</Prompt>
-          <Prompt>Buy:</Prompt>
-          <RecommendationCards
-            recommendation={recommendation.recommendation}
+          <Prompt>{queryResponse.recommendation.message}</Prompt>
+          <RecommendationBuy
+            fares={queryResponse.fares}
+            recommendation={queryResponse.recommendation}
           />
-          <Savings savings={recommendation.recommendation}/>
-          <Prompt>Use:</Prompt>
+          {/* <RecommendationUse
+            calendar={formData.calendar}
+            recommendation={queryResponse.recommendation}
+          /> */}
           </>
       }
 
