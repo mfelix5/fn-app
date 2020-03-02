@@ -97,6 +97,7 @@ const styles = StyleSheet.create({
     marginBottom: 50
   },
   buttonContainer: {
-    paddingHorizontal: Layout.margin
+    paddingHorizontal: Layout.margin,
+    marginBottom: 50
   }
 });

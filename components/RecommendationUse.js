@@ -4,58 +4,54 @@ import moment from "moment";
 import Colors from "../constants/Colors";
 import Layout from "../constants/Layout";
 
-// week string from API:
-// "Sun Mar 01 2020 05:00:00 GMT+0000 - Fri Mar 06 2020 05:00:00 GMT+0000"
-
 export default function RecommendationUse({ calendar, recommendation }) {
   const badgeLabels = {
     oneWays: "one-ways",
     weekly: "weekly",
     monthly: "monthly"
-  }
+  };
   return (
     <View style={styles.useContainer}>
-      <Text style={styles.useText}>Use:</Text>
-      {
-        Object.keys(calendar).map(week => {
+      <Text style={styles.useText}>When to use them:</Text>
+      {Object.keys(calendar).map((week, i) => {
+        if (recommendation.use[week]) {
           const [beginDate, endDate] = calendar[week].split(" - ");
           const [day1, month1, date1] = beginDate.split(" ");
           const [day2, month2, date2] = endDate.split(" ");
           const badgeLabel = badgeLabels[recommendation.use[week]];
           return (
-            <>
-            <View style={styles.hr}></View>
-            <View style={styles.weekContainer}>
-              <View style={styles.dayContainer}>
-                <Text style={styles.dayText}>{day1.toUpperCase()}</Text>
-                <Text style={styles.dateText}>{`${moment()
-                  .month(month1)
-                  .format("MM")}/${date1}`}</Text>
-              </View>
-              <View style={styles.circle}></View>
-              <View style={styles.dayContainer}>
-                <Text style={styles.dayText}>{day2.toUpperCase()}</Text>
-                <Text style={styles.dateText}>{`${moment()
-                  .month(month2)
-                  .format("MM")}/${date2}`}</Text>
-              </View>
-              <View style={styles.badgeContainer}>
-                <View style={styles.badge}>
-                  <Text style={styles.badgeText}>{badgeLabel}</Text>
+            <View key={i}>
+              <View style={styles.hr}></View>
+              <View style={styles.weekContainer}>
+                <View style={styles.dayContainer}>
+                  <Text style={styles.dayText}>{day1.toUpperCase()}</Text>
+                  <Text style={styles.dateText}>{`${moment()
+                    .month(month1)
+                    .format("MM")}/${date1}`}</Text>
+                </View>
+                <View style={styles.circle}></View>
+                <View style={styles.dayContainer}>
+                  <Text style={styles.dayText}>{day2.toUpperCase()}</Text>
+                  <Text style={styles.dateText}>{`${moment()
+                    .month(month2)
+                    .format("MM")}/${date2}`}</Text>
+                </View>
+                <View style={styles.badgeContainer}>
+                  <View style={styles.badge}>
+                    <Text style={styles.badgeText}>{badgeLabel}</Text>
+                  </View>
                 </View>
               </View>
             </View>
-            </>
-          )
-        })
-      }
+          );
+        }
+      })}
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  useContainer: {
-  },
+  useContainer: {},
   useText: {
     marginHorizontal: Layout.margin,
     color: "white"
@@ -99,7 +95,7 @@ const styles = StyleSheet.create({
   },
   badgeContainer: {
     justifyContent: "flex-end",
-    alignItems: 'center'
+    alignItems: "center"
   },
   badge: {
     justifyContent: "center",

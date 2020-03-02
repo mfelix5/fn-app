@@ -1,6 +1,6 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import Colors from '../constants/Colors';
+import React from "react";
+import { StyleSheet, Text, View } from "react-native";
+import Colors from "../constants/Colors";
 import Layout from "../constants/Layout";
 
 export default function RecommendationBuy(props) {
@@ -11,7 +11,9 @@ export default function RecommendationBuy(props) {
     monthly: "Monthly ticket"
   };
   const cards = [];
-  const normalize = (num) => { return (Math.round(num * 100) / 100).toFixed(2) }
+  const normalize = num => {
+    return (Math.round(num * 100) / 100).toFixed(2);
+  };
 
   Object.keys(purchase).forEach(type => {
     if (purchase[type] > 0) {
@@ -19,33 +21,42 @@ export default function RecommendationBuy(props) {
         type: type === "oneWay" ? "one-way-peak" : type,
         purchase: purchase[type],
         label: labels[type]
-      })
+      });
     }
   });
 
   return (
     <>
-    <Text style={{...styles.text, ...styles.buyText}}>Buy:</Text>
-    <View style={styles.cardContainer}>
-      {
-        cards.map((card, i) => {
+      <Text style={{ ...styles.text, ...styles.buyText }}>What to buy:</Text>
+      <View style={styles.cardContainer}>
+        {cards.map((card, i) => {
           const cost = card.purchase * props.fares[card.type];
           return (
-            <View style={[styles.card, i%2 !== 0 ? styles.card2: null]} key={i}>
-              <Text style={{...styles.text, ...styles.number}}>{card.purchase}</Text>
+            <View
+              style={[styles.card, i % 2 !== 0 ? styles.card2 : null]}
+              key={i}
+            >
+              <Text style={{ ...styles.text, ...styles.number }}>
+                {card.purchase}
+              </Text>
               <Text style={styles.text}>{card.label}</Text>
               <View style={styles.hr}></View>
               <Text style={styles.text}>${normalize(cost)}</Text>
             </View>
           );
-        })
-      }
-    </View>
-    <View style={styles.savingsContainer}>
-      <Text style={{...styles.text, ...styles.whiteText}}>Total</Text>
-      <Text style={{...styles.text, ...styles.totalCostText}}>${normalize(totalCost)}</Text>
-      <Text style={{...styles.text, ...styles.savingsText}}>Savings over a monthly ticket: ${normalize(savings)}</Text>
-    </View>
+        })}
+      </View>
+      <View style={styles.savingsContainer}>
+        <Text style={{ ...styles.text, ...styles.whiteText }}>Total</Text>
+        <Text style={{ ...styles.text, ...styles.totalCostText }}>
+          ${normalize(totalCost)}
+        </Text>
+        {purchase.monthly === 0 && (
+          <Text style={{ ...styles.text, ...styles.savingsText }}>
+            Savings over a monthly ticket: ${normalize(savings)}
+          </Text>
+        )}
+      </View>
     </>
   );
 }
@@ -71,10 +82,10 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 16,
     color: Colors.darkBlue,
-    fontFamily: 'roboto-medium'
+    fontFamily: "roboto-medium"
   },
   number: {
-    fontSize: 66,
+    fontSize: 66
   },
   hr: {
     borderBottomColor: Colors.darkBlue,
