@@ -1,18 +1,18 @@
 import React from 'react';
-import { Modal, StyleSheet, View } from 'react-native';
-import ModalHeader from "../components/ModalHeader";
+import { StyleSheet, View } from 'react-native';
+import FormNavigationHeader from "./FormNavigationHeader";
 import Colors from '../constants/Colors';
 
-export default function AppModal({ children, formNumber, onBack }) {
+export default function FormScreenTemplate({ children, formNumber, onBack }) {
   return (
-    <Modal animationType="slide">
-      <ModalHeader onBack={onBack} formNumber={formNumber}/>
+    <>
+      <FormNavigationHeader onBack={onBack} formNumber={formNumber}/>
       <View style={styles.modalContainer}>
         <View style={styles.formWrapper}>
           {children}
         </View>
       </View>
-    </Modal>
+</>
   );
 }
 

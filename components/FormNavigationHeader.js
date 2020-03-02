@@ -1,9 +1,9 @@
 import React from "react";
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { StyleSheet, TouchableOpacity, View } from 'react-native';
 import { Circle } from "./Circle";
 import { Ionicons } from '@expo/vector-icons';
 
-export default function ModalHeader({ onBack, formNumber }) {
+export default function FormNavigationHeader({ onBack, formNumber }) {
   return (
     <View style={styles.container}>
       <TouchableOpacity

@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import { ScrollView, StyleSheet, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import Colors from "../constants/Colors";
 import AppButton from "../components/AppButton";
 import PromptText from "../components/PromptText";
-import FormOne from "../components/FormOne";
+import FormOne from "./FormOne";
 
-export default function HomeScreen() {
+export default function HomeScreen(props) {
   const [formOneOpen, setFormOneOpen] = useState(false);
   return (
     <View style={styles.container}>
@@ -17,7 +17,10 @@ export default function HomeScreen() {
           </PromptText>
         </View>
         <AppButton
-          handlePress={() => setFormOneOpen(true)}
+          // handlePress={() => setFormOneOpen(true)}
+          handlePress={() => {
+            props.navigation.navigate({ routeName: "FormOne" })
+          }}
           buttonText="Get Going!"
         />
         {formOneOpen && <FormOne setFormOneOpen={setFormOneOpen} />}

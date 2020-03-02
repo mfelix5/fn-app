@@ -3,14 +3,13 @@ import { StyleSheet, View } from "react-native";
 import axios from "axios";
 import {
   AppButton,
-  AppModal,
+  FormScreenTemplate,
   Prompt,
-  Recommendation,
   WeekRow
 } from "../components";
 
-export default function FormThree({ setFormThreeOpen, formData }) {
-  const [recommendationOpen, setRecommendationOpen] = useState(false);
+export default function FormThree(props) {
+  const formData = props.navigation.getParam("formData");
   const [calendar, setCalendar] = useState({});
 
   const MIN_TRIPS = 0;
@@ -35,7 +34,7 @@ export default function FormThree({ setFormThreeOpen, formData }) {
   }, []);
 
   return (
-    <AppModal onBack={() => setFormThreeOpen(false)} formNumber={3}>
+    <FormScreenTemplate onBack={() => {props.navigation.goBack()}} formNumber={3}>
       <Prompt>
         {`How many one-way trips will you make between ${formData.origin.Name} and ${formData.destination.Name}?`}
       </Prompt>
@@ -67,20 +66,21 @@ export default function FormThree({ setFormThreeOpen, formData }) {
       <View style={styles.buttonContainer}>
         <AppButton
           buttonText="Ok, all set!"
-          handlePress={() => setRecommendationOpen(true)}
-        />
-      </View>
-      {recommendationOpen && (
-        <Recommendation
-          setRecommendationOpen={setRecommendationOpen}
-          formData={{
-            ...formData,
-            calendar,
-            oneWaysNeeded: trips
+          handlePress={() => {
+            props.navigation.navigate({
+              routeName: "Recommendation",
+              params: {
+                formData: {
+                  ...formData,
+                  calendar,
+                  oneWaysNeeded: trips
+                }
+              }
+            })
           }}
         />
-      )}
-    </AppModal>
+      </View>
+    </FormScreenTemplate>
   );
 }
 

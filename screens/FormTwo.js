@@ -3,11 +3,11 @@ import { StyleSheet, TouchableOpacity, View } from "react-native";
 import axios from "axios";
 import moment from "moment";
 import PickerModal from "react-native-picker-modal-view";
-import { AppButton, AppModal, SelectedText, Prompt } from "../components";
-import FormThree from "../components/FormThree";
+import { AppButton, FormScreenTemplate, SelectedText, Prompt } from "../components";
 
-export default function FormTwo({ setFormTwoOpen, system }) {
-  const [formThreeOpen, setFormThreeOpen] = useState(false);
+export default function FormTwo(props) {
+  const system = props.navigation.getParam("system");
+
   const [linesInSystem, setLines] = useState([]);
   const [selectedLine, setLine] = useState(null);
   const [stations, setStations] = useState([]);
@@ -61,7 +61,7 @@ export default function FormTwo({ setFormTwoOpen, system }) {
   }
 
   return (
-    <AppModal onBack={() => setFormTwoOpen(false)} formNumber={2}>
+    <FormScreenTemplate onBack={() => {props.navigation.goBack()}} formNumber={2}>
       {system === "NJT" &&
         <View>
         <Prompt includeHR>Which line?</Prompt>
@@ -137,24 +137,24 @@ export default function FormTwo({ setFormTwoOpen, system }) {
         <AppButton
           handlePress={() => {
             if (selectedOrigin && selectedDestination && selectedMonth) {
-              setFormThreeOpen(true)
+              props.navigation.navigate({
+                routeName: "FormThree",
+                params: {
+                  formData: {
+                    system,
+                    line: selectedLine,
+                    origin: selectedOrigin,
+                    destination: selectedDestination,
+                    month: selectedMonth.Value
+                  }
+                }
+              });
             }
           }}
           buttonText="Ok, Next!"
         />
       </View>
-      {formThreeOpen &&
-        <FormThree
-          setFormThreeOpen={setFormThreeOpen}
-          formData={{
-            system,
-            line: selectedLine,
-            origin: selectedOrigin,
-            destination: selectedDestination,
-            month: selectedMonth.Value
-          }}
-      />}
-    </AppModal>
+    </FormScreenTemplate>
   );
 }
 

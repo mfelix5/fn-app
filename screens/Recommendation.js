@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { StyleSheet, Text } from "react-native";
 import axios from "axios";
-import AppModal from "../components/AppModal";
+import FormScreenTemplate from "../components/FormScreenTemplate";
 import RecommendationBuy from "../components/RecommendationBuy";
 import Prompt from "../components/Prompt";
-import RecommendationUse from "./RecommendationUse";
+import RecommendationUse from "../components/RecommendationUse";
 
-export default function Recommendation({ setRecommendationOpen, formData }) {
+export default function Recommendation(props) {
+  const formData = props.navigation.getParam("formData");
   const [queryResponse, setQueryResponse] = useState({});
   useEffect(() => {
     const fetchRecommendation = async () => {
@@ -30,7 +31,7 @@ export default function Recommendation({ setRecommendationOpen, formData }) {
   }, []);
 
   return (
-    <AppModal onBack={() => setRecommendationOpen(false)}>
+    <FormScreenTemplate onBack={() => {props.navigation.goBack()}}>
       {
         queryResponse && queryResponse.recommendation &&
           <>
@@ -45,8 +46,7 @@ export default function Recommendation({ setRecommendationOpen, formData }) {
           /> */}
           </>
       }
-
-    </AppModal>
+    </FormScreenTemplate>
   );
 }
 

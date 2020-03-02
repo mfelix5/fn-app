@@ -4,11 +4,6 @@ import PromptText from "../components/PromptText";
 import Colors from "../constants/Colors";
 
 export default function SystemButtons(props) {
-  const handlePress = (system) => {
-    props.setSystem(system);
-    props.setFormTwoOpen(true);
-  };
-
   return (
     <View style={styles.container}>
       {systems.map(system => {
@@ -17,7 +12,7 @@ export default function SystemButtons(props) {
           disabled={!system.active}
           style={styles.button}
           key={system.name}
-          onPress={() => handlePress(system.name)}
+          onPress={() => props.onSelect(system.name)}
         >
           <View style={styles.hr}/>
           <PromptText style={styles.text}>{system.name}</PromptText>
