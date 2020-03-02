@@ -15,7 +15,7 @@ export default function RecommendationUse({ calendar, recommendation }) {
   }
   return (
     <View style={styles.useContainer}>
-      <Text>Use:</Text>
+      <Text style={styles.useText}>Use:</Text>
       {
         Object.keys(calendar).map(week => {
           const [beginDate, endDate] = calendar[week].split(" - ");
@@ -55,7 +55,10 @@ export default function RecommendationUse({ calendar, recommendation }) {
 
 const styles = StyleSheet.create({
   useContainer: {
-
+  },
+  useText: {
+    marginHorizontal: Layout.margin,
+    color: "white"
   },
   weekContainer: {
     flexDirection: "row",

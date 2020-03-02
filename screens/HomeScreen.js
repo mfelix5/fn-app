@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
   },
   image: {
     marginTop: 100,
-    marginBottom: 100,
+    marginBottom: 80,
     width: 200,
     height: 150,
     resizeMode: "cover"

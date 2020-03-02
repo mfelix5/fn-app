@@ -64,7 +64,7 @@ export default function FormTwo(props) {
   return (
     <FormScreenTemplate onBack={() => {props.navigation.goBack()}} formNumber={2}>
       {system === "NJT" &&
-        <View>
+        <View style={styles.formSection}>
         <Prompt includeHR>Which line?</Prompt>
         <PickerModal
           renderSelectView={(disabled, selected, showModal) => (
@@ -83,7 +83,7 @@ export default function FormTwo(props) {
         </View>
       }
 
-      <View>
+      <View style={styles.formSection}>
         <Prompt includeHR>Origin?</Prompt>
         <PickerModal
           renderSelectView={(disabled, selected, showNextModal) => (
@@ -100,7 +100,7 @@ export default function FormTwo(props) {
           autoSort={false}
         />
       </View>
-      <View>
+      <View style={styles.formSection}>
         <Prompt includeHR>Destination?</Prompt>
         <PickerModal
           renderSelectView={(disabled, selected, showNextModal) => (
@@ -117,7 +117,7 @@ export default function FormTwo(props) {
           autoSort={false}
         />
       </View>
-      <View>
+      <View style={styles.formSection}>
         <Prompt includeHR>When?</Prompt>
         <PickerModal
           renderSelectView={(disabled, selected, showModal) => (
@@ -160,7 +160,12 @@ export default function FormTwo(props) {
 }
 
 const styles = StyleSheet.create({
+  formSection: {
+    marginTop: 20,
+    marginBottom: 20
+  },
   buttonContainer: {
+    marginTop: 50,
     paddingHorizontal: Layout.margin
   },
 });

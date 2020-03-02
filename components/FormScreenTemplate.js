@@ -1,32 +1,24 @@
-import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import React from "react";
+import { StyleSheet, ScrollView, View } from "react-native";
 import FormNavigationHeader from "./FormNavigationHeader";
-import Colors from '../constants/Colors';
+import Colors from "../constants/Colors";
 
 export default function FormScreenTemplate({ children, formNumber, onBack }) {
   return (
-    <>
-      <FormNavigationHeader onBack={onBack} formNumber={formNumber}/>
-      <View style={styles.screenContainer}>
-        <View style={styles.formWrapper}>
-          {children}
-        </View>
-      </View>
-</>
+    <ScrollView style={styles.scrollContainer}>
+      <FormNavigationHeader onBack={onBack} formNumber={formNumber} />
+      <View style={styles.formWrapper}>{children}</View>
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
-  screenContainer: {
-    flex: 1,
-    flexDirection: "column",
-    alignItems: "center",
-    justifyContent: "center",
-    backgroundColor: Colors.darkBlue
+  scrollContainer: {
+    backgroundColor: Colors.darkBlue,
+    flex: 1
   },
   formWrapper: {
-    width: "100%",
     flex: 1,
-    justifyContent: "space-around",
-  },
+    width: "100%"
+  }
 });

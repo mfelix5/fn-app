@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { StyleSheet } from "react-native";
+import React from "react";
+import { StyleSheet, View } from "react-native";
 import { FormScreenTemplate, Prompt, SystemButtons } from "../components";
 
 const FormOne = props => {
@@ -13,13 +13,19 @@ const FormOne = props => {
   }
   return (
     <FormScreenTemplate onBack={() => {props.navigation.goBack()}} formNumber={1}>
-        <Prompt>Which transit system?</Prompt>
-        <SystemButtons onSelect={onSelect}/>
+        <View style={styles.prompt}>
+          <Prompt>Which transit system?</Prompt>
+        </View>
+        <SystemButtons style={styles.buttons} onSelect={onSelect}/>
     </FormScreenTemplate>
   );
 }
 
 const styles = StyleSheet.create({
+  prompt: {
+    marginTop: 20,
+    marginBottom: 200
+  },
 });
 
 export default FormOne;

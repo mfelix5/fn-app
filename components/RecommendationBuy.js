@@ -25,7 +25,7 @@ export default function RecommendationBuy(props) {
 
   return (
     <>
-    <Text style={{...styles.text, ...styles.whiteText}}>Buy:</Text>
+    <Text style={{...styles.text, ...styles.buyText}}>Buy:</Text>
     <View style={styles.cardContainer}>
       {
         cards.map((card, i) => {
@@ -55,6 +55,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     marginHorizontal: Layout.margin,
     justifyContent: "space-around",
+    marginVertical: 15
   },
   card: {
     backgroundColor: "rgb(255, 255, 255)",
@@ -96,5 +97,9 @@ const styles = StyleSheet.create({
   },
   whiteText: {
     color: "white"
+  },
+  buyText: {
+    color: "white",
+    marginHorizontal: Layout.margin
   }
 });

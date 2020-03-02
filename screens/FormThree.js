@@ -36,10 +36,13 @@ export default function FormThree(props) {
 
   return (
     <FormScreenTemplate onBack={() => {props.navigation.goBack()}} formNumber={3}>
-      <Prompt>
-        {`How many one-way trips will you make between ${formData.origin.Name} and ${formData.destination.Name}?`}
-      </Prompt>
-      <View>
+      <View style={styles.prompt}>
+        <Prompt>
+          {`How many one-way trips will you make between ${formData.origin.Name} and ${formData.destination.Name}?`}
+        </Prompt>
+      </View>
+
+      <View style={styles.weekContainer}>
         {Object.keys(calendar).map((week, i) => {
           const weekKey = `week${i + 1}`;
           return (
@@ -86,6 +89,13 @@ export default function FormThree(props) {
 }
 
 const styles = StyleSheet.create({
+  prompt: {
+    marginTop: 20,
+    marginBottom: 50
+  },
+  weekContainer: {
+    marginBottom: 50
+  },
   buttonContainer: {
     paddingHorizontal: Layout.margin
   }
