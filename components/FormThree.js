@@ -27,7 +27,7 @@ export default function FormThree({ setFormThreeOpen, formData }) {
   useEffect(() => {
     const fetchCalendar = async () => {
       const result = await axios(
-        `http://localhost:3000/calendar?date=${formData.month}`
+        `https://farewise.herokuapp.com/calendar?date=${formData.month}`
       );
       setCalendar(result.data);
     };

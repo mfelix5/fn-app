@@ -29,7 +29,7 @@ export default function FormTwo({ setFormTwoOpen, system }) {
     const fetchLines = async () => {
       if (["NJT"].includes(system)) {
         const result = await axios(
-          `http://localhost:3000/lines?system=${system}`
+          `https://farewise.herokuapp.com/lines?system=${system}`
         );
         const lineOptions = result.data.map(line => ({Name: line}));
         setLines(lineOptions);
@@ -42,9 +42,9 @@ export default function FormTwo({ setFormTwoOpen, system }) {
     const fetchStations = async () => {
       let result;
       if (system === "NJT") {
-        result = await axios.post(`http://localhost:3000/stations`, { system, line: selectedLine });
+        result = await axios.post(`https://farewise.herokuapp.com/stations`, { system, line: selectedLine });
       } else if (system === "LIRR") {
-        result = await axios.get(`http://localhost:3000/stations?system=${system}`);
+        result = await axios.get(`https://farewise.herokuapp.com/stations?system=${system}`);
       }
       const stations = result.data.map(s => ({ ...s, Name: s.name }));
       setStations(stations);
