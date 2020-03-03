@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Image, StyleSheet, View, ScrollView } from "react-native";
 import Colors from "../constants/Colors";
 import AppButton from "../components/AppButton";
@@ -7,12 +7,12 @@ import Layout from "../constants/Layout";
 
 export default function HomeScreen(props) {
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       <Image source={require("../assets/images/fw.png")} style={styles.image} />
       <View style={styles.textContainer}>
         <PromptText style={styles.text}>
-          Farewise helps you save on your monthly commuting expenses in just
-          three steps.
+          Farewise helps you save on your monthly commuting expenses in
+          three easy steps.
         </PromptText>
       </View>
       <AppButton
@@ -22,7 +22,7 @@ export default function HomeScreen(props) {
         }}
         buttonText="Get Going!"
       />
-    </View>
+    </ScrollView>
   );
 }
 
@@ -34,7 +34,6 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: Colors.darkBlue,
     paddingHorizontal: Layout.margin,
-    justifyContent: "center",
     flex: 1
   },
   text: {
@@ -42,10 +41,10 @@ const styles = StyleSheet.create({
     marginBottom: 100
   },
   image: {
+    marginTop: 125,
     marginBottom: 80,
     width: 200,
     height: 150,
     resizeMode: "cover"
   },
-
 });

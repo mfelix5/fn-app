@@ -17,7 +17,10 @@ export default function SystemButtons(props) {
         >
           <View style={styles.hr}/>
           <View style={styles.buttonTextContainer}>
-          <PromptText style={styles.buttonText}>{system.name}</PromptText>
+          <PromptText
+            style={system.active ? styles.active : styles.disabled }>
+              {system.name}
+          </PromptText>
           </View>
 
         </TouchableOpacity>
@@ -36,13 +39,16 @@ const styles = StyleSheet.create({
     marginTop: 11,
     paddingLeft: Layout.margin,
   },
-  buttonText: {
+  active: {
     color: Colors.lightBlue
   },
   hr: {
     borderBottomColor: Colors.lightBlue,
     borderBottomWidth: 2,
-  }
+  },
+  disabled: {
+    color: "gray"
+  },
 });
 
 const systems = [

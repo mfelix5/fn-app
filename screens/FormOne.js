@@ -12,7 +12,10 @@ const FormOne = props => {
     })
   }
   return (
-    <FormScreenTemplate onBack={() => {props.navigation.goBack()}} formNumber={1}>
+    <FormScreenTemplate
+      onBack={() => {props.navigation.goBack()}}
+      formNumber={1}
+    >
         <View style={styles.prompt}>
           <Prompt>Which transit system?</Prompt>
         </View>
