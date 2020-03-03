@@ -137,7 +137,7 @@ export default function FormTwo(props) {
       <View style={styles.buttonContainer}>
         <AppButton
           handlePress={() => {
-            if (selectedOrigin && selectedDestination && selectedMonth) {
+            if (selectedOrigin && selectedDestination && Object.keys(selectedMonth).length) {
               props.navigation.navigate({
                 routeName: "FormThree",
                 params: {

@@ -6,7 +6,6 @@ import PromptText from "../components/PromptText";
 import Layout from "../constants/Layout";
 
 export default function HomeScreen(props) {
-  const [formOneOpen, setFormOneOpen] = useState(false);
   return (
     <View style={styles.container}>
       <Image source={require("../assets/images/fw.png")} style={styles.image} />
