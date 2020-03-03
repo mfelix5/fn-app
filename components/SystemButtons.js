@@ -6,7 +6,7 @@ import Layout from "../constants/Layout";
 
 export default function SystemButtons(props) {
   return (
-    <View style={styles.container}>
+    <View>
       {systems.map(system => {
         return (
         <TouchableOpacity
@@ -16,7 +16,10 @@ export default function SystemButtons(props) {
           onPress={() => props.onSelect(system.name)}
         >
           <View style={styles.hr}/>
-          <PromptText style={styles.text}>{system.name}</PromptText>
+          <View style={styles.buttonTextContainer}>
+          <PromptText style={styles.buttonText}>{system.name}</PromptText>
+          </View>
+
         </TouchableOpacity>
         );
       })}
@@ -25,16 +28,15 @@ export default function SystemButtons(props) {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    width: "100%",
-    alignItems: "flex-start"
-  },
   button: {
     height: 80,
-    width: "100%"
+    width: "100%",
   },
-  text: {
+  buttonTextContainer: {
+    marginTop: 11,
     paddingLeft: Layout.margin,
+  },
+  buttonText: {
     color: Colors.lightBlue
   },
   hr: {

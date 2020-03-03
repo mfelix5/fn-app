@@ -12,7 +12,7 @@ export default function RecommendationUse({ calendar, recommendation }) {
   };
   return (
     <View style={styles.useContainer}>
-      <Text style={styles.useText}>When to use them:</Text>
+      {/* <Text style={styles.useText}>When to use them:</Text> */}
       {Object.keys(calendar).map((week, i) => {
         if (recommendation.use[week]) {
           const [beginDate, endDate] = calendar[week].split(" - ");

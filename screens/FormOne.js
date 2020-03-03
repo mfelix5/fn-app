@@ -24,7 +24,7 @@ const FormOne = props => {
 const styles = StyleSheet.create({
   prompt: {
     marginTop: 20,
-    marginBottom: 200
+    marginBottom: 100
   },
 });
 
