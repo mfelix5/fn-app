@@ -32,7 +32,7 @@ export default function WeekRow({ handleMinus, handlePlus, nTrips, weekString })
         <Entypo
           style={styles.icon}
           name={"minus"}
-          size={34}
+          size={Layout.isSmallDevice ? 26 : 34}
           color="white"
           onPress={handleMinus}
         />
@@ -42,7 +42,7 @@ export default function WeekRow({ handleMinus, handlePlus, nTrips, weekString })
         <Entypo
           style={styles.icon}
           name={"plus"}
-          size={34}
+          size={Layout.isSmallDevice ? 26 : 34}
           color="white"
           onPress={handlePlus}
         />
@@ -92,8 +92,8 @@ const styles = StyleSheet.create({
   square: {
     justifyContent: "center",
     alignItems: "center",
-    width: 60,
-    height: 60,
+    width: Layout.isSmallDevice ? 40 : 60,
+    height: Layout.isSmallDevice ? 40 : 60,
     borderRadius: 4,
     backgroundColor: Colors.lightBlue
   }
