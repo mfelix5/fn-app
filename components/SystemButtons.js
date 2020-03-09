@@ -12,8 +12,8 @@ export default function SystemButtons(props) {
         <TouchableOpacity
           disabled={!system.active}
           style={styles.button}
-          key={system.name}
-          onPress={() => props.onSelect(system.name)}
+          key={system.value}
+          onPress={() => props.onSelect(system.value)}
         >
           <View style={styles.hr}/>
           <View style={styles.buttonTextContainer}>
@@ -53,33 +53,23 @@ const styles = StyleSheet.create({
 
 const systems = [
   {
-    name: "MTA Subway",
-    icon: "",
-    active: false
-  },
-  {
-    name: "MTA Bus",
-    icon: "",
-    active: false
-  },
-  {
     name: "LIRR",
-    icon: "",
+    value: "LIRR",
     active: true
   },
   {
-    name: "MetroNorth",
-    icon: "",
+    name: "Metro North",
+    value: "MN",
     active: false
   },
   {
-    name: "NJT",
-    icon: "",
+    name: "NJ Transit",
+    value: "NJT",
     active: true
   },
   {
     name: "PATH",
-    icon: "",
+    value: "PATH",
     active: false
   }
 ];

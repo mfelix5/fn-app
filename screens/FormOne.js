@@ -17,7 +17,7 @@ const FormOne = props => {
       formNumber={1}
     >
         <View style={styles.prompt}>
-          <Prompt>Which transit system?</Prompt>
+          <Prompt>Which rail system?</Prompt>
         </View>
         <SystemButtons style={styles.buttons} onSelect={onSelect}/>
     </FormScreenTemplate>
