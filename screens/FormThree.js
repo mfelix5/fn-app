@@ -27,10 +27,12 @@ export default FormThree = ({ navigation }) => {
 
   useEffect(() => {
     const fetchCalendar = async () => {
-      const result = await axios(
-        `${env.API_URL}/calendar?date=${formData.month}`
-      );
-      setCalendar(result.data);
+      try {
+        const result = await axios(`${env.API_URL}/calendar?date=${formData.month}`);
+        setCalendar(result.data);
+      } catch (err) {
+        alert("Unable to reach the server. Please try again later.")
+      }
     };
     fetchCalendar();
   }, []);

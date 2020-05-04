@@ -17,8 +17,7 @@ export default Recommendation = ({ navigation }) => {
   useEffect(() => {
     const fetchRecommendation = async () => {
       try {
-        const result = await axios.post(
-          `${env.API_URL}/query`,
+        const result = await axios.post(`${env.API_URL}/query`,
           {
             userId: "development",
             fareType: "regular",
@@ -30,7 +29,7 @@ export default Recommendation = ({ navigation }) => {
         );
         setQueryResponse(result.data);
       } catch (err) {
-        console.log("err", err);
+        alert("Unable to reach the server. Please try again later.")
       }
     };
     fetchRecommendation();

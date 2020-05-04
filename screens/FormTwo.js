@@ -29,12 +29,14 @@ export default FormTwo = ({ navigation }) => {
 
   useEffect(() => {
     const fetchLines = async () => {
-      if (["NJT"].includes(system)) {
-        const result = await axios(
-          `${env.API_URL}/lines?system=${system}`
-        );
-        const lineOptions = result.data.map(line => ({Name: line}));
-        setLines(lineOptions);
+      try {
+        if (["NJT"].includes(system)) {
+          const result = await axios(`${env.API_URL}/lines?system=${system}`);
+          const lineOptions = result.data.map(line => ({Name: line}));
+          setLines(lineOptions);
+        }
+      } catch (err) {
+        alert("Unable to reach the server. Please try again later.");
       }
     };
     fetchLines();
@@ -42,15 +44,18 @@ export default FormTwo = ({ navigation }) => {
 
   useEffect(() => {
     const fetchStations = async () => {
-      let result;
-      if (system === "NJT") {
-        result = await axios.post(`${env.API_URL}/stations`, { system, line: selectedLine });
-      } else if (system === "LIRR") {
-        result = await axios.get(`${env.API_URL}/stations?system=${system}`);
+      try {
+        let result;
+        if (system === "NJT") {
+          result = await axios.post(`${env.API_URL}/stations`, { system, line: selectedLine });
+        } else if (system === "LIRR") {
+          result = await axios.get(`${env.API_URL}/stations?system=${system}`);
+        }
+        const stations = result.data.map(s => ({ ...s, Name: s.name }));
+        setStations(stations);
+      } catch (err) {
+        alert("Unable to reach the server. Please try again later.");
       }
-      const stations = result.data.map(s => ({ ...s, Name: s.name }));
-      setStations(stations);
-
     };
     fetchStations();
   }, [selectedLine]);
