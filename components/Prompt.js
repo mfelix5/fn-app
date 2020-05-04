@@ -4,11 +4,11 @@ import PromptText from "../components/PromptText";
 import Colors from '../constants/Colors';
 import Layout from "../constants/Layout";
 
-export default function Prompt(props) {
+export default Prompt = ({ children, includeHR }) => {
   return (
     <View style={styles.promptContainer}>
-      <PromptText style={styles.text}>{props.children}</PromptText>
-      {props.includeHR && <View style={styles.hr}/>}
+      <PromptText style={styles.text}>{children}</PromptText>
+      {includeHR && <View style={styles.hr}/>}
     </View>
   );
 }

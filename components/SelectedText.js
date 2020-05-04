@@ -5,7 +5,7 @@ import { Ionicons } from '@expo/vector-icons';
 import Colors from '../constants/Colors';
 import Layout from "../constants/Layout";
 
-export default function SelectedText({ children }) {
+export default SelectedText = ({ children }) => {
 
   const displaySelectOrSelectedValue = ( )=> {
     if (children) {

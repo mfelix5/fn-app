@@ -1,6 +1,6 @@
 import React from "react";
 import { StyleSheet, TouchableOpacity, View } from 'react-native';
-import { Circle } from "./Circle";
+import Circle from "./Circle";
 import { Ionicons } from '@expo/vector-icons';
 import Layout from "../constants/Layout";
 

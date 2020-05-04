@@ -10,8 +10,8 @@ import {
 } from "../components";
 import Layout from "../constants/Layout";
 
-export default function FormThree(props) {
-  const formData = props.navigation.getParam("formData");
+export default FormThree = ({ navigation }) => {
+  const formData = navigation.getParam("formData");
   const [calendar, setCalendar] = useState({});
 
   const MIN_TRIPS = 0;
@@ -36,7 +36,7 @@ export default function FormThree(props) {
   }, []);
 
   return (
-    <FormScreenTemplate onBack={() => {props.navigation.goBack()}} formNumber={3}>
+    <FormScreenTemplate onBack={() => {navigation.goBack()}} formNumber={3}>
       <View style={styles.prompt}>
         <Prompt>
           {`How many one-way trips will you make between ${formData.origin.Name} and ${formData.destination.Name}?`}
@@ -72,7 +72,7 @@ export default function FormThree(props) {
         <AppButton
           buttonText="Ok, all set!"
           handlePress={() => {
-            props.navigation.navigate({
+            navigation.navigate({
               routeName: "Recommendation",
               params: {
                 formData: {

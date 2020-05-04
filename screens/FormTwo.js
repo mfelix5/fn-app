@@ -7,8 +7,8 @@ import PickerModal from "react-native-picker-modal-view";
 import { AppButton, FormScreenTemplate, SelectedText, Prompt } from "../components";
 import Layout from "../constants/Layout";
 
-export default function FormTwo(props) {
-  const system = props.navigation.getParam("system");
+export default FormTwo = ({ navigation }) => {
+  const system = navigation.getParam("system");
 
   const [linesInSystem, setLines] = useState([]);
   const [selectedLine, setLine] = useState(null);
@@ -63,7 +63,7 @@ export default function FormTwo(props) {
   }
 
   return (
-    <FormScreenTemplate onBack={() => {props.navigation.goBack()}} formNumber={2}>
+    <FormScreenTemplate onBack={() => {navigation.goBack()}} formNumber={2}>
       {system === "NJT" &&
         <View style={styles.formSection}>
         <Prompt includeHR>Which line?</Prompt>
@@ -139,7 +139,7 @@ export default function FormTwo(props) {
         <AppButton
           handlePress={() => {
             if (selectedOrigin && selectedDestination && Object.keys(selectedMonth).length) {
-              props.navigation.navigate({
+              navigation.navigate({
                 routeName: "FormThree",
                 params: {
                   formData: {

@@ -2,9 +2,9 @@ import React from "react";
 import { StyleSheet, View } from "react-native";
 import { FormScreenTemplate, Prompt, SystemButtons } from "../components";
 
-const FormOne = props => {
-  const onSelect = (system) => {
-    props.navigation.navigate({
+export default FormOne = ({ navigation}) => {
+  const handlePress = (system) => {
+    navigation.navigate({
       routeName: "FormTwo",
       params: {
         system,
@@ -13,13 +13,13 @@ const FormOne = props => {
   }
   return (
     <FormScreenTemplate
-      onBack={() => {props.navigation.goBack()}}
+      onBack={() => {navigation.goBack()}}
       formNumber={1}
     >
         <View style={styles.prompt}>
           <Prompt>Which rail system?</Prompt>
         </View>
-        <SystemButtons style={styles.buttons} onSelect={onSelect}/>
+        <SystemButtons style={styles.buttons} handlePress={handlePress}/>
     </FormScreenTemplate>
   );
 }
@@ -30,5 +30,3 @@ const styles = StyleSheet.create({
     marginBottom: 100
   },
 });
-
-export default FormOne;

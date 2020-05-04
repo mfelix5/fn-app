@@ -4,7 +4,7 @@ import PromptText from "../components/PromptText";
 import Colors from "../constants/Colors";
 import Layout from "../constants/Layout";
 
-export default function SystemButtons(props) {
+export default SystemButtons = ({ handlePress }) => {
   return (
     <View>
       {systems.map(system => {
@@ -13,7 +13,7 @@ export default function SystemButtons(props) {
           disabled={!system.active}
           style={styles.button}
           key={system.value}
-          onPress={() => props.onSelect(system.value)}
+          onPress={() => handlePress(system.value)}
         >
           <View style={styles.hr}/>
           <View style={styles.buttonTextContainer}>

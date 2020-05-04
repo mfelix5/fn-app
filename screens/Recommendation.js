@@ -9,8 +9,8 @@ import RecommendationUse from "../components/RecommendationUse";
 import Layout from "../constants/Layout";
 import Colors from "../constants/Colors";
 
-export default function Recommendation(props) {
-  const formData = props.navigation.getParam("formData");
+export default Recommendation = ({ navigation }) => {
+  const formData = navigation.getParam("formData");
   const [queryResponse, setQueryResponse] = useState({});
   const [selected, setSelected] = useState("buy");
 
@@ -39,7 +39,7 @@ export default function Recommendation(props) {
   return (
     <FormScreenTemplate
       onBack={() => {
-        props.navigation.goBack();
+        navigation.goBack();
       }}
     >
       {queryResponse && queryResponse.recommendation && (

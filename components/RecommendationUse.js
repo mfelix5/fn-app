@@ -4,7 +4,7 @@ import moment from "moment";
 import Colors from "../constants/Colors";
 import Layout from "../constants/Layout";
 
-export default function RecommendationUse({ calendar, recommendation }) {
+export default RecommendationUse = ({ calendar, recommendation }) => {
   const badgeLabels = {
     oneWays: "one-ways",
     weekly: "weekly",
@@ -12,7 +12,6 @@ export default function RecommendationUse({ calendar, recommendation }) {
   };
   return (
     <View style={styles.useContainer}>
-      {/* <Text style={styles.useText}>When to use them:</Text> */}
       {Object.keys(calendar).map((week, i) => {
         if (recommendation.use[week]) {
           const [beginDate, endDate] = calendar[week].split(" - ");

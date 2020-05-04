@@ -3,7 +3,7 @@ import { SafeAreaView, StyleSheet, ScrollView, View } from "react-native";
 import FormNavigationHeader from "./FormNavigationHeader";
 import Colors from "../constants/Colors";
 
-export default function FormScreenTemplate({ children, formNumber, onBack }) {
+export default FormScreenTemplate = ({ children, formNumber, onBack }) => {
   return (
     <SafeAreaView style={styles.safeContainer}>
       <ScrollView>

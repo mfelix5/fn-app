@@ -5,7 +5,7 @@ import AppButton from "../components/AppButton";
 import PromptText from "../components/PromptText";
 import Layout from "../constants/Layout";
 
-export default function HomeScreen(props) {
+export default HomeScreen = ({ navigation }) => {
   return (
     <SafeAreaView style={styles.safeContainer}>
       <ScrollView style={styles.container}>
@@ -19,7 +19,7 @@ export default function HomeScreen(props) {
         <AppButton
           style={styles.button}
           handlePress={() => {
-            props.navigation.navigate({ routeName: "FormOne" });
+            navigation.navigate({ routeName: "FormOne" });
           }}
           buttonText="Get Going!"
         />

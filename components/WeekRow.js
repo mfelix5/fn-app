@@ -8,7 +8,7 @@ import Layout from "../constants/Layout";
 // week string from API:
 // "Sun Mar 01 2020 05:00:00 GMT+0000 - Fri Mar 06 2020 05:00:00 GMT+0000"
 
-export default function WeekRow({ handleMinus, handlePlus, nTrips, weekString }) {
+export default WeekRow = ({ handleMinus, handlePlus, nTrips, weekString }) => {
   const [beginDate, endDate] = weekString.split(" - ");
   const [day1, month1, date1] = beginDate.split(" ");
   const [day2, month2, date2] = endDate.split(" ");

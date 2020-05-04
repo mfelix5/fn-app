@@ -3,8 +3,8 @@ import { StyleSheet, Text, View } from 'react-native';
 import Colors from '../constants/Colors';
 import Layout from "../constants/Layout";
 
-export default function Savings(props) {
-  const { savings, totalCost } = props.savings;
+export default Savings = ({ savings }) => {
+  const { savings, totalCost } = savings;
 
   return (
     <View style={styles.savingsContainer}>

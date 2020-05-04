@@ -3,8 +3,8 @@ import { StyleSheet, Text, View } from "react-native";
 import Colors from "../constants/Colors";
 import Layout from "../constants/Layout";
 
-export default function RecommendationBuy(props) {
-  const { purchase, savings, totalCost } = props.recommendation;
+export default RecommendationBuy = ({ fares, recommendation }) => {
+  const { purchase, savings, totalCost } = recommendation;
   const labels = {
     oneWay: "One-way ticket(s)",
     weekly: "Weekly ticket(s)",
@@ -29,7 +29,7 @@ export default function RecommendationBuy(props) {
     <>
       <View style={styles.cardContainer}>
         {cards.map((card, i) => {
-          const cost = card.purchase * props.fares[card.type];
+          const cost = card.purchase * fares[card.type];
           return (
             <View
               style={[styles.card, i % 2 !== 0 ? styles.card2 : null]}
