@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { StyleSheet, TouchableOpacity, View } from "react-native";
 import axios from "axios";
+import env from "../env.js";
 import moment from "moment";
 import PickerModal from "react-native-picker-modal-view";
 import { AppButton, FormScreenTemplate, SelectedText, Prompt } from "../components";
@@ -30,7 +31,7 @@ export default function FormTwo(props) {
     const fetchLines = async () => {
       if (["NJT"].includes(system)) {
         const result = await axios(
-          `https://farewise.herokuapp.com/lines?system=${system}`
+          `${env.API_URL}/lines?system=${system}`
         );
         const lineOptions = result.data.map(line => ({Name: line}));
         setLines(lineOptions);
@@ -43,9 +44,9 @@ export default function FormTwo(props) {
     const fetchStations = async () => {
       let result;
       if (system === "NJT") {
-        result = await axios.post(`https://farewise.herokuapp.com/stations`, { system, line: selectedLine });
+        result = await axios.post(`${env.API_URL}/stations`, { system, line: selectedLine });
       } else if (system === "LIRR") {
-        result = await axios.get(`https://farewise.herokuapp.com/stations?system=${system}`);
+        result = await axios.get(`${env.API_URL}/stations?system=${system}`);
       }
       const stations = result.data.map(s => ({ ...s, Name: s.name }));
       setStations(stations);

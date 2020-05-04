@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import axios from "axios";
+import env from "../env.js";
 import FormScreenTemplate from "../components/FormScreenTemplate";
 import RecommendationBuy from "../components/RecommendationBuy";
 import Prompt from "../components/Prompt";
@@ -17,7 +18,7 @@ export default function Recommendation(props) {
     const fetchRecommendation = async () => {
       try {
         const result = await axios.post(
-          `https://farewise.herokuapp.com/query`,
+          `${env.API_URL}/query`,
           {
             userId: "development",
             fareType: "regular",

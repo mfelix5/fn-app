@@ -6,7 +6,10 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "eject": "expo eject",
-    "test": "jest --watchAll"
+    "test": "jest --watchAll",
+    "set-local": "touch active.env.js && shx echo \"export default 'local';\"> active.env.js",
+    "set-dev": "touch active.env.js && shx echo \"export default 'development';\"> active.env.js",
+    "set-prod": "touch active.env.js && shx echo \"export default 'production';\"> active.env.js"
   },
   "jest": {
     "preset": "jest-expo"
@@ -37,7 +40,8 @@
   "devDependencies": {
     "@babel/core": "^7.0.0",
     "babel-preset-expo": "~8.0.0",
-    "jest-expo": "~36.0.1"
+    "jest-expo": "~36.0.1",
+    "shx": "^0.3.2"
   },
   "private": true
 }

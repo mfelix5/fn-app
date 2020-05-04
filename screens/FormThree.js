@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { StyleSheet, View } from "react-native";
 import axios from "axios";
+import env from "../env.js";
 import {
   AppButton,
   FormScreenTemplate,
@@ -27,7 +28,7 @@ export default function FormThree(props) {
   useEffect(() => {
     const fetchCalendar = async () => {
       const result = await axios(
-        `https://farewise.herokuapp.com/calendar?date=${formData.month}`
+        `${env.API_URL}/calendar?date=${formData.month}`
       );
       setCalendar(result.data);
     };
