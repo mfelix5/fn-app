@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "farewise",
+    "name": "Farewise",
     "slug": "farewise",
     "privacy": "public",
     "sdkVersion": "37.0.0",
@@ -11,11 +11,11 @@
     ],
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
+    "icon": "./assets/images/icon_300x300.png",
     "splash": {
-      "image": "./assets/images/splash.png",
+      "image": "./assets/images/splash_640x640.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#0B0D35"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
@@ -24,8 +24,15 @@
       "**/*"
     ],
     "ios": {
+      "buildNumber": "1.0.0",
+      "bundleIdentifier": "io.farewise",
       "supportsTablet": true
     },
-    "description": ""
+    "android": {
+      "package": "io.farewise",
+      "permissions": [],
+      "versionCode": 1
+    },
+    "description": "Farewise helps you save on your monthly Long Island Railroad, Metro-North and New Jersey Transit commuting expenses."
   }
 }
