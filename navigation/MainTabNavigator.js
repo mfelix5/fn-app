@@ -5,7 +5,7 @@ import { createBottomTabNavigator } from 'react-navigation-tabs';
 
 import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
-import SettingsScreen from '../screens/SettingsScreen';
+// import SettingsScreen from '../screens/SettingsScreen';
 import Colors from "../constants/Colors";
 
 const config = Platform.select({
@@ -32,25 +32,25 @@ HomeStack.navigationOptions = {
 
 HomeStack.path = '';
 
-const SettingsStack = createStackNavigator(
-  {
-    Settings: SettingsScreen,
-  },
-  config
-);
+// const SettingsStack = createStackNavigator(
+//   {
+//     Settings: SettingsScreen,
+//   },
+//   config
+// );
 
-SettingsStack.navigationOptions = {
-  tabBarLabel: 'About',
-  tabBarIcon: ({ focused }) => (
-    <TabBarIcon focused={focused} name="ios-at" />
-  ),
-};
+// SettingsStack.navigationOptions = {
+//   tabBarLabel: 'About',
+//   tabBarIcon: ({ focused }) => (
+//     <TabBarIcon focused={focused} name="ios-at" />
+//   ),
+// };
 
-SettingsStack.path = '';
+// SettingsStack.path = '';
 
 const tabNavigator = createBottomTabNavigator({
   HomeStack,
-  SettingsStack,
+  // SettingsStack,
 },
 {
   tabBarOptions: {
