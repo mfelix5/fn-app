@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, TouchableOpacity, View } from 'react-native';
+import { Platform, StyleSheet, TouchableOpacity, View } from 'react-native';
 import Circle from "./Circle";
 import { Ionicons } from '@expo/vector-icons';
 import Layout from "../constants/Layout";
@@ -34,6 +34,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "flex-start",
     alignItems: "center",
+    paddingTop: Platform.OS === "android" ? 40 : 0,
     paddingBottom: 20,
     paddingLeft: Layout.margin,
     backgroundColor: "#0B0D35"
