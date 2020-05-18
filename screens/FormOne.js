@@ -19,7 +19,7 @@ export default FormOne = ({ navigation}) => {
         <View style={styles.prompt}>
           <Prompt>Which rail system?</Prompt>
         </View>
-        <SystemButtons style={styles.buttons} handlePress={handlePress}/>
+        <SystemButtons handlePress={handlePress}/>
     </FormScreenTemplate>
   );
 }

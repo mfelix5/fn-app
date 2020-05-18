@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, TouchableOpacity } from 'react-native';
 import Colors from '../constants/Colors';
+import FontSize from "../constants/FontSize";
 
 export default AppButton = ({ buttonText, handlePress }) => {
   return (
@@ -16,7 +17,7 @@ export default AppButton = ({ buttonText, handlePress }) => {
 const styles = StyleSheet.create({
   button: {
     width: "100%",
-    height: 110,
+    height: 90,
     backgroundColor: Colors.lightBlue,
     borderRadius: 5,
     justifyContent: "center",
@@ -24,7 +25,7 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     color: Colors.darkBlue,
-    fontSize: 36,
+    fontSize: FontSize.large,
     fontFamily: 'roboto-medium'
   },
 });

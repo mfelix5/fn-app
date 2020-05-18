@@ -74,16 +74,18 @@ export default FormThree = ({ navigation }) => {
         <AppButton
           buttonText="Ok, all set!"
           handlePress={() => {
-            navigation.navigate({
-              routeName: "Recommendation",
-              params: {
-                formData: {
-                  ...formData,
-                  calendar,
-                  oneWaysNeeded: trips
+            if (trips.week1 || trips.week2 || trips.week3 || trips.week4 || trips.week5 || trips.week6) {
+              navigation.navigate({
+                routeName: "Recommendation",
+                params: {
+                  formData: {
+                    ...formData,
+                    calendar,
+                    oneWaysNeeded: trips
+                  }
                 }
-              }
-            })
+              })
+            }
           }}
         />
       </View>

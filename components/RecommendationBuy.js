@@ -1,6 +1,7 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import Colors from "../constants/Colors";
+import FontSize from "../constants/FontSize";
 import Layout from "../constants/Layout";
 
 export default RecommendationBuy = ({ fares, recommendation }) => {
@@ -45,15 +46,16 @@ export default RecommendationBuy = ({ fares, recommendation }) => {
           );
         })}
       </View>
-      <View style={styles.savingsContainer}>
-        <Text style={{ ...styles.text, ...styles.whiteText }}>Total</Text>
+      <View style={styles.totalContainer}>
         <Text style={{ ...styles.text, ...styles.totalCostText }}>
-          ${normalize(totalCost)}
+          Total: ${normalize(totalCost)}
         </Text>
         {purchase.monthly === 0 && (
-          <Text style={{ ...styles.text, ...styles.savingsText }}>
-            Savings over a monthly ticket: ${normalize(savings)}
-          </Text>
+          <View style={styles.savingsContainer}>
+            <Text style={{ ...styles.text, ...styles.savingsText }}>
+              Savings over a monthly ticket: <Text style={{ ...styles.text, ...styles.savingsText, ...styles.amountSaved }}>${normalize(savings)}</Text></Text>
+
+          </View>
         )}
       </View>
     </>
@@ -79,7 +81,7 @@ const styles = StyleSheet.create({
     backgroundColor: "rgb(255, 238, 218)"
   },
   text: {
-    fontSize: 16,
+    fontSize: FontSize.small,
     color: Colors.darkBlue,
     fontFamily: "roboto-medium"
   },
@@ -93,16 +95,20 @@ const styles = StyleSheet.create({
     height: 18,
     marginBottom: 18
   },
-  savingsContainer: {
+  totalContainer: {
     marginHorizontal: Layout.margin
   },
   totalCostText: {
-    fontSize: 36,
+    fontSize: 16,
     color: "white",
     marginTop: 8,
-    marginBottom: 8
+    marginBottom: 40
   },
   savingsText: {
+    color: "white",
+    fontSize: FontSize.large,
+  },
+  amountSaved: {
     color: Colors.lightBlue
   },
   whiteText: {

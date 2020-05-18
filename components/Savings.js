@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import Colors from '../constants/Colors';
+import FontSize from "../constants/FontSize";
 import Layout from "../constants/Layout";
 
 export default Savings = ({ savings }) => {
@@ -20,13 +21,13 @@ const styles = StyleSheet.create({
     marginHorizontal: Layout.margin
   },
   text: {
-    fontSize: 14,
+    fontSize: FontSize.small,
     color: "white",
     fontFamily: 'roboto-medium',
     marginTop: 8
   },
   largeFont: {
-    fontSize: 36,
+    fontSize: FontSize.large,
   },
   lightBlue: {
     color: Colors.lightBlue

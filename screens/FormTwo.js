@@ -167,8 +167,7 @@ export default FormTwo = ({ navigation }) => {
 
 const styles = StyleSheet.create({
   formSection: {
-    marginTop: 20,
-    marginBottom: 20
+    marginVertical: 15,
   },
   buttonContainer: {
     marginTop: 50,

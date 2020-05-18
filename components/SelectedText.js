@@ -3,6 +3,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import { Entypo } from '@expo/vector-icons';
 import { Ionicons } from '@expo/vector-icons';
 import Colors from '../constants/Colors';
+import FontSize from "../constants/FontSize";
 import Layout from "../constants/Layout";
 
 export default SelectedText = ({ children }) => {
@@ -44,7 +45,7 @@ export default SelectedText = ({ children }) => {
 
 const styles = StyleSheet.create({
   text: {
-    fontSize: 24,
+    fontSize: FontSize.medium,
     color: Colors.lightBlue,
     fontFamily: 'roboto-medium',
   },

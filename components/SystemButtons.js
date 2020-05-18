@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
     width: "100%",
   },
   buttonTextContainer: {
-    marginTop: 11,
+    marginTop: 20,
     paddingLeft: Layout.margin,
   },
   active: {

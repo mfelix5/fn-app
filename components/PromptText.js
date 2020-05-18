@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text } from 'react-native';
+import FontSize from "../constants/FontSize";
 
 export default PromptText = ({ children, style}) => {
   return (
@@ -11,9 +12,8 @@ export default PromptText = ({ children, style}) => {
 
 const styles = StyleSheet.create({
   text: {
-    fontSize: 36,
+    fontSize: FontSize.large,
     color: "white",
-    lineHeight: 50,
     fontFamily: 'roboto-medium'
   },
 });

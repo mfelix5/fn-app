@@ -2,6 +2,7 @@ import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import moment from "moment";
 import Colors from "../constants/Colors";
+import FontSize from "../constants/FontSize";
 import Layout from "../constants/Layout";
 
 export default RecommendationUse = ({ calendar, recommendation }) => {
@@ -66,17 +67,17 @@ const styles = StyleSheet.create({
   },
   dayText: {
     color: Colors.lightBlue,
-    fontSize: 14,
+    fontSize: FontSize.small,
     fontFamily: "roboto-medium"
   },
   dateText: {
     color: Colors.lightBlue,
-    fontSize: 36,
+    fontSize: FontSize.large,
     fontFamily: "roboto-medium"
   },
   badgeText: {
     color: "black",
-    fontSize: 16,
+    fontSize: FontSize.small,
     fontFamily: "roboto-medium"
   },
   hr: {

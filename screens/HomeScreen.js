@@ -8,7 +8,7 @@ import Layout from "../constants/Layout";
 export default HomeScreen = ({ navigation }) => {
   return (
     <SafeAreaView style={styles.safeContainer}>
-      <ScrollView style={styles.container}>
+      <ScrollView contentContainerStyle={styles.container}>
         <Image source={require("../assets/images/fw.png")} style={styles.image} />
         <View style={styles.textContainer}>
           <PromptText style={styles.text}>
@@ -16,13 +16,15 @@ export default HomeScreen = ({ navigation }) => {
             three easy steps.
           </PromptText>
         </View>
-        <AppButton
-          style={styles.button}
-          handlePress={() => {
-            navigation.navigate({ routeName: "FormOne" });
-          }}
-          buttonText="Get Going!"
-        />
+        <View style={styles.buttonContainer}>
+          <AppButton
+            handlePress={() => {
+              navigation.navigate({ routeName: "FormOne" });
+            }}
+            buttonText="Get Going!"
+          />
+        </View>
+
       </ScrollView>
     </SafeAreaView>
   );
@@ -40,17 +42,19 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: Colors.darkBlue,
     paddingHorizontal: Layout.margin,
+    justifyContent: "space-between",
     flex: 1
   },
   text: {
     color: Colors.lightBlue,
-    marginBottom: 100
   },
   image: {
-    marginTop: 125,
-    marginBottom: 80,
+    marginTop: Layout.window.height * .1,
     width: 200,
-    height: 150,
+    height: 125,
     resizeMode: "cover"
   },
+  buttonContainer: {
+    marginBottom: Layout.window.height * .15
+  }
 });
