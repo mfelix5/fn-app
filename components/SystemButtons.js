@@ -66,10 +66,5 @@ const systems = [
     name: "NJ Transit",
     value: "NJT",
     active: true
-  },
-  {
-    name: "PATH",
-    value: "PATH",
-    active: false
   }
 ];
