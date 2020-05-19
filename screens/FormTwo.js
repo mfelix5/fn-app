@@ -71,7 +71,7 @@ export default FormTwo = ({ navigation }) => {
     <FormScreenTemplate onBack={() => {navigation.goBack()}} formNumber={2}>
       {system === "NJT" &&
         <View style={styles.formSection}>
-        <Prompt includeHR>Which line?</Prompt>
+        <Prompt includeHR>Line</Prompt>
         <PickerModal
           renderSelectView={(disabled, selected, showModal) => (
             <TouchableOpacity disabled={disabled} onPress={showModal}>
@@ -90,7 +90,7 @@ export default FormTwo = ({ navigation }) => {
       }
 
       <View style={styles.formSection}>
-        <Prompt includeHR>Origin?</Prompt>
+        <Prompt includeHR>Origin</Prompt>
         <PickerModal
           renderSelectView={(disabled, selected, showNextModal) => (
             <TouchableOpacity disabled={disabled} onPress={showNextModal}>
@@ -107,7 +107,7 @@ export default FormTwo = ({ navigation }) => {
         />
       </View>
       <View style={styles.formSection}>
-        <Prompt includeHR>Destination?</Prompt>
+        <Prompt includeHR>Destination</Prompt>
         <PickerModal
           renderSelectView={(disabled, selected, showNextModal) => (
             <TouchableOpacity disabled={disabled} onPress={showNextModal}>
@@ -124,7 +124,7 @@ export default FormTwo = ({ navigation }) => {
         />
       </View>
       <View style={styles.formSection}>
-        <Prompt includeHR>When?</Prompt>
+        <Prompt includeHR>Month</Prompt>
         <PickerModal
           renderSelectView={(disabled, selected, showModal) => (
             <TouchableOpacity disabled={disabled} onPress={showModal}>

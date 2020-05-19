@@ -12,8 +12,7 @@ export default HomeScreen = ({ navigation }) => {
         <Image source={require("../assets/images/fw.png")} style={styles.image} />
         <View style={styles.textContainer}>
           <PromptText style={styles.text}>
-            Farewise helps you save on your monthly commuting expenses in
-            three easy steps.
+            Save on your monthly commuting expenses with Farewise.
           </PromptText>
         </View>
         <View style={styles.buttonContainer}>

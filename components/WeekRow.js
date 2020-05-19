@@ -86,7 +86,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     marginTop: 8,
     marginRight: 17
-    // justifyContent: "center",
   },
   quantityText: {
     color: "black",
