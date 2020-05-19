@@ -6,11 +6,16 @@ import Layout from "../constants/Layout";
 
 export default RecommendationBuy = ({ fares, recommendation }) => {
   const { purchase, savings, totalCost } = recommendation;
+
   const labels = {
     oneWay: "One-way ticket(s)",
     weekly: "Weekly ticket(s)",
     monthly: "Monthly ticket"
   };
+  const savingsText = purchase.monthly
+  ? "Savings over a combination of one-way and weekly tickets:"
+  : "Savings over a monthly ticket:";
+
   const cards = [];
   const normalize = num => {
     return (Math.round(num * 100) / 100).toFixed(2);
@@ -48,15 +53,13 @@ export default RecommendationBuy = ({ fares, recommendation }) => {
       </View>
       <View style={styles.totalContainer}>
         <Text style={{ ...styles.text, ...styles.totalCostText }}>
-          Total: ${normalize(totalCost)}
+          Total cost: <Text style={{ ...styles.text, ...styles.savingsText, ...styles.highlight }}>${normalize(totalCost)}</Text>
         </Text>
-        {purchase.monthly === 0 && (
           <View style={styles.savingsContainer}>
             <Text style={{ ...styles.text, ...styles.savingsText }}>
-              Savings over a monthly ticket: <Text style={{ ...styles.text, ...styles.savingsText, ...styles.amountSaved }}>${normalize(savings)}</Text></Text>
-
+              {savingsText} <Text style={{ ...styles.text, ...styles.savingsText, ...styles.highlight }}>${normalize(savings)}</Text>
+            </Text>
           </View>
-        )}
       </View>
     </>
   );
@@ -99,16 +102,16 @@ const styles = StyleSheet.create({
     marginHorizontal: Layout.margin
   },
   totalCostText: {
-    fontSize: 16,
+    fontSize: FontSize.large,
     color: "white",
-    marginTop: 8,
+    marginTop: 20,
     marginBottom: 40
   },
   savingsText: {
     color: "white",
     fontSize: FontSize.large,
   },
-  amountSaved: {
+  highlight: {
     color: Colors.lightBlue
   },
   whiteText: {

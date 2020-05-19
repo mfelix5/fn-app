@@ -78,7 +78,11 @@ export default FormTwo = ({ navigation }) => {
               <SelectedText>{selectedLine}</SelectedText>
             </TouchableOpacity>
           )}
-            onSelected={(s) => setLine(s.Name)}
+            onSelected={(s) => {
+              setLine(s.Name);
+              setOrigin("");
+              setDestination("");
+            }}
             items={linesInSystem}
             selected={selectedLine}
             autoGenerateAlphabeticalIndex={true}

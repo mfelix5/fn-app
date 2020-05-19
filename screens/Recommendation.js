@@ -44,9 +44,9 @@ export default Recommendation = ({ navigation }) => {
       {queryResponse && queryResponse.recommendation && (
         <>
           <View style={styles.prompt}>
-            <Prompt>{queryResponse.recommendation.message}</Prompt>
+            <Prompt>Your least expensive ticketing option:</Prompt>
           </View>
-          <View style={styles.buyUseBar}>
+          {/* <View style={styles.buyUseBar}>
             <TouchableOpacity onPress={() => setSelected("buy")}>
               <Text
                 style={[
@@ -69,7 +69,7 @@ export default Recommendation = ({ navigation }) => {
               </Text>
             </TouchableOpacity>
             )}
-          </View>
+          </View> */}
           {selected === "buy" && (
             <View style={styles.buySection}>
               <RecommendationBuy
